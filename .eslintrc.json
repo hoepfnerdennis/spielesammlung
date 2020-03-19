@@ -49,6 +49,7 @@
         "react/jsx-one-expression-per-line": "off",
         "react/jsx-closing-bracket-location": "off",
         "react/no-danger": "off",
+        "react/prop-types": "off",
         "react/forbid-prop-types": "off",
         "react/no-array-index-key": "warn",
         "react/no-children-prop": "warn",

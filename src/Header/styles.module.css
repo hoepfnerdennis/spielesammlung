@@ -1,0 +1,22 @@
+.header {
+    background-color: darkcyan;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    text-align: center;
+
+    max-width: 800px;
+    margin: 0 auto;
+    padding: .6rem;
+}
+
+.caption {
+    font-weight: 700;
+    margin-bottom: .2rem;
+}

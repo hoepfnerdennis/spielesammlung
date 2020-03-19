@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Mensch ärgere dich nicht",
+        "description": "Bei diesem Brettspiel laufen vier Figuren eines jeden Spielers einmal um das Spielfeld. Das Ziel ist dabei die Umrundung und Rückkehr ins eigene Haus. Die Spieler können die gegnerischen Figuren dabei immer wieder aus dem Spiel werfen",
+        "players": {
+            "from": "2",
+            "to": "4"
+        },
+        "age": "ab 4",
+        "duration": "10 - 15"
+    },
+    {
+        "name": "Siedler",
+        "description": "Bei diesem Brettspiel laufen vier Figuren eines jeden Spielers einmal um das Spielfeld. Das Ziel ist dabei die Umrundung und Rückkehr ins eigene Haus. Die Spieler können die gegnerischen Figuren dabei immer wieder aus dem Spiel werfen",
+        "players": {
+            "from": "2",
+            "to": "4"
+        },
+        "age": "ab 8",
+        "duration": "10 - 15"
+    },
+    {
+        "name": "Patchwork",
+        "description": "Bei diesem Brettspiel laufen vier Figuren eines jeden Spielers einmal um das Spielfeld. Das Ziel ist dabei die Umrundung und Rückkehr ins eigene Haus. Die Spieler können die gegnerischen Figuren dabei immer wieder aus dem Spiel werfen",
+        "players": {
+            "from": "2",
+            "to": "2"
+        },
+        "age": "ab 12",
+        "duration": "10 - 15"
+    },
+    {
+        "name": "Drecksau",
+        "description": "Bei diesem Brettspiel laufen vier Figuren eines jeden Spielers einmal um das Spielfeld. Das Ziel ist dabei die Umrundung und Rückkehr ins eigene Haus. Die Spieler können die gegnerischen Figuren dabei immer wieder aus dem Spiel werfen",
+        "players": {
+            "from": "3",
+            "to": "5"
+        },
+        "age": "ab 4",
+        "duration": "10 - 15"
+    },
+    {
+        "name": "Monopoli",
+        "description": "Bei diesem Brettspiel laufen vier Figuren eines jeden Spielers einmal um das Spielfeld. Das Ziel ist dabei die Umrundung und Rückkehr ins eigene Haus. Die Spieler können die gegnerischen Figuren dabei immer wieder aus dem Spiel werfen",
+        "players": {
+            "from": "2",
+            "to": "10"
+        },
+        "age": "ab 8",
+        "duration": "10 - 15"
+    }
+]

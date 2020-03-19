@@ -1,0 +1,12 @@
+.container {
+    margin-right: .3rem;
+}
+
+.selectbox {
+    margin-left: .3rem;
+    background-color: darkcyan;
+    /* width: 60px; */
+    height: 2rem;
+    font-size: 1rem;
+    color: white;
+}
