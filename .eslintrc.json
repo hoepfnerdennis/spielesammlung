@@ -1,0 +1,84 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+      },
+      "extends": [
+        "airbnb",
+        "prettier",
+        "prettier/react",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+      },
+      "plugins": ["react", "jest", "prettier", "react-hooks", "@typescript-eslint"],
+      "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error",
+        "prettier/prettier": "error",
+        "no-console": "error",
+        "curly": ["error", "all"],
+        "no-unused-vars": "error",
+        "no-tabs": "off",
+        "max-len": "off",
+        "class-methods-use-this": "off",
+        "no-use-before-define": "error",
+        "object-curly-newline": "off",
+        "function-paren-newline": ["off", "consistent"],
+        "space-before-function-paren": "off",
+        "operator-linebreak": "off",
+        "implicit-arrow-linebreak": "off",
+        "import/newline-after-import": "off",
+        "import/no-unresolved": "off",
+        "import/extensions": "off",
+        "react/jsx-uses-vars": "warn",
+        "react/jsx-indent": "off",
+        "react/jsx-indent-props": "off",
+        "react/jsx-filename-extension": "off",
+        "react/jsx-first-prop-new-line": "off",
+        "react/jsx-no-comment-textnodes": "warn",
+        "react/jsx-no-target-blank": "off",
+        "react/jsx-tag-spacing": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/jsx-closing-bracket-location": "off",
+        "react/no-danger": "off",
+        "react/forbid-prop-types": "off",
+        "react/no-array-index-key": "warn",
+        "react/no-children-prop": "warn",
+        "react/no-danger-with-children": "warn",
+        "react/no-find-dom-node": "warn",
+        "react/no-render-return-value": "warn",
+        "react/no-unused-prop-types": "warn",
+        "react/no-unescaped-entities": "warn",
+        "react/require-default-props": "off",
+        "react/destructuring-assignment": "warn",
+        "jest/prefer-to-have-length": "error",
+        "jest/prefer-to-be-null": "error",
+        "jest/prefer-to-be-undefined": "error",
+        "jest/prefer-expect-assertions": "off",
+        "jsx-a11y/label-has-for": [
+          "warn",
+          {
+            "required": {
+              "some": ["nesting", "id"]
+            }
+          }
+        ],
+        "jsx-a11y/no-static-element-interactions": [
+          "warn",
+          {
+            "handlers": ["onClick", "onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"]
+          }
+        ],
+        "import/prefer-default-export": "warn",
+        "@typescript-eslint/ban-ts-ignore": "warn",
+        "@typescript-eslint/interface-name-prefix": "off"
+      }
+}
