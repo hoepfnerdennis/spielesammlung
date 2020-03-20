@@ -2,16 +2,16 @@ import React, { useCallback, memo } from 'react';
 import styles from './styles.module.css';
 
 type SelectProps = {
-  values: Array<string>;
-  onChange: (value: string) => void;
+  values: Array<number>;
+  onChange: (value: number) => void;
   label: string;
   valueSuffix?: string;
 };
 
 const Select: React.SFC<SelectProps> = ({ label, onChange, values, valueSuffix }): JSX.Element => {
   const handleChange = useCallback(
-    event => {
-      onChange(event.target.value);
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      onChange(parseInt(event.target.value, 10));
     },
     [onChange]
   );

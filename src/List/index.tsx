@@ -5,13 +5,13 @@ import useGames from './handler';
 import Select from '../Select';
 
 const List: React.FC = (): JSX.Element => {
-  const {
+  const [
     games,
     playersFromValues,
     playersToValues,
     filterByPlayersFrom,
     filterByPlayersTo,
-  } = useGames();
+  ] = useGames();
   return (
     <>
       <div className={styles.filters}>
@@ -28,14 +28,15 @@ const List: React.FC = (): JSX.Element => {
           valueSuffix="Spieler"
         />
       </div>
-      {games.map(({ age, description, duration, name, players }) => (
+      {games.map(({ age, description, duration, name, playersFrom, playersTo }) => (
         <Entry
           key={name}
           age={age}
           description={description}
           duration={duration}
           name={name}
-          players={players}
+          playersFrom={playersFrom}
+          playersTo={playersTo}
         />
       ))}
     </>

@@ -1,32 +1,48 @@
 import { useState, useEffect, useMemo } from 'react';
-import { EntryProps } from '../Entry/types';
+import { IGame, IAPIResponse } from './types';
 
-const order = (a: string, b: string): number => parseInt(a, 10) - parseInt(b, 10);
+type FilterValues = number[];
+type FilterFunction = (value: number) => void;
 
-const useGames = () => {
-  const [allGames, setAllGames] = useState<Array<EntryProps>>([]);
-  const [games, setGames] = useState<Array<EntryProps>>([]);
+const order = (a: number, b: number): number => a - b;
 
-  const [filterByPlayersFromValue, setFilterByPlayersFromValue] = useState<string | undefined>();
-  const [filterByPlayersToValue, setFilterByPlayersToValue] = useState<string | undefined>();
+const SPACE_ID = '9sxha2f3gm24';
+const API_TOKEN = '7LDIC95TsrYOfZwEQnbAuMHtij97kfk5r1dIRiGqT8M';
+const URI = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/master/entries?access_token=${API_TOKEN}`;
+
+const useGames = (): [IGame[], FilterValues, FilterValues, FilterFunction, FilterFunction] => {
+  const [allGames, setAllGames] = useState<IGame[]>([]);
+  const [games, setGames] = useState<IGame[]>([]);
+
+  const [filterByPlayersFromValue, setFilterByPlayersFromValue] = useState<number | undefined>();
+  const [filterByPlayersToValue, setFilterByPlayersToValue] = useState<number | undefined>();
 
   useEffect(() => {
-    import(/* webpackChunkName: "games" */ './games.json').then(({ default: data }) => {
-      setAllGames(data);
-      setGames(data);
-    });
+    const loadGames = async (): Promise<void> => {
+      try {
+        const response = await fetch(URI);
+        const data: IAPIResponse = await response.json();
+        const gamesFromAPI: IGame[] = data.items.map(item => item.fields);
+        setAllGames(gamesFromAPI);
+        setGames(gamesFromAPI);
+      } catch {
+        setAllGames([]);
+        setGames([]);
+      }
+    };
+    loadGames();
   }, []);
 
-  const playersFromValues = useMemo(() => {
+  const playersFromValues: number[] = useMemo(() => {
     return allGames
-      .map(game => game.players.from)
+      .map(game => game.playersFrom)
       .filter((players, index, array) => array.indexOf(players) === index)
       .sort(order);
   }, [allGames]);
 
-  const playersToValues = useMemo(() => {
+  const playersToValues: number[] = useMemo(() => {
     return allGames
-      .map(game => game.players.to)
+      .map(game => game.playersTo)
       .filter((players, index, array) => array.indexOf(players) === index)
       .sort(order);
   }, [allGames]);
@@ -34,15 +50,15 @@ const useGames = () => {
   useEffect(() => {
     let filteredGames = allGames;
     if (filterByPlayersFromValue) {
-      filteredGames = filteredGames.filter(game => game.players.from === filterByPlayersFromValue);
+      filteredGames = filteredGames.filter(game => game.playersFrom === filterByPlayersFromValue);
     }
     if (filterByPlayersToValue) {
-      filteredGames = filteredGames.filter(game => game.players.to === filterByPlayersToValue);
+      filteredGames = filteredGames.filter(game => game.playersTo === filterByPlayersToValue);
     }
     setGames(filteredGames);
   }, [allGames, filterByPlayersFromValue, filterByPlayersToValue]);
 
-  const filterByPlayersFrom = (value: string): void => {
+  const filterByPlayersFrom = (value: number): void => {
     if (value) {
       setFilterByPlayersFromValue(value);
     } else {
@@ -50,7 +66,7 @@ const useGames = () => {
     }
   };
 
-  const filterByPlayersTo = (value: string): void => {
+  const filterByPlayersTo = (value: number): void => {
     if (value) {
       setFilterByPlayersToValue(value);
     } else {
@@ -58,7 +74,7 @@ const useGames = () => {
     }
   };
 
-  return { games, playersFromValues, playersToValues, filterByPlayersFrom, filterByPlayersTo };
+  return [games, playersFromValues, playersToValues, filterByPlayersFrom, filterByPlayersTo];
 };
 
 export default useGames;

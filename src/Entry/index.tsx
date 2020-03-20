@@ -1,14 +1,15 @@
 import React, { memo } from 'react';
 import styles from './styles.module.css';
-import { EntryProps } from './types';
+import { IGame } from '../List/types';
 
 const src =
   'https://images.unsplash.com/photo-1582921017967-79d1cb6702ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=50';
 
-const Entry: React.SFC<EntryProps> = ({
+const Entry: React.SFC<IGame> = ({
   name,
   description,
-  players,
+  playersFrom,
+  playersTo,
   age,
   duration,
 }): JSX.Element => {
@@ -24,7 +25,7 @@ const Entry: React.SFC<EntryProps> = ({
               👤
             </span>
             <b className={styles.highlight}>
-              {players.from === players.to ? players.from : `${players.from} - ${players.to}`}
+              {playersFrom === playersTo ? playersFrom : `${playersFrom} - ${playersTo}`}
             </b>
           </p>
           <p className={styles.players}>
