@@ -1,0 +1,270 @@
+{
+    "sys": {
+      "type": "Array"
+    },
+    "total": 3,
+    "skip": 0,
+    "limit": 100,
+    "items": [
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "9sxha2f3gm24"
+            }
+          },
+          "id": "3zb06yYz4dtxMGBwZTzner",
+          "type": "Entry",
+          "createdAt": "2020-03-20T13:09:56.770Z",
+          "updatedAt": "2020-03-20T14:37:30.445Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 2,
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "game"
+            }
+          },
+          "locale": "en-US"
+        },
+        "fields": {
+          "name": "Mensch ärgere dich nicht",
+          "description": "Bei diesem Brettspiel laufen vier Figuren eines jeden Spielers einmal um das Spielfeld. Das Ziel ist dabei die Umrundung und Rückkehr ins eigene Haus. Die Spieler können die gegnerischen Figuren dabei immer wieder aus dem Spiel werfen",
+          "playersFrom": 2,
+          "playersTo": 4,
+          "duration": "10 - 15 Minuten",
+          "age": "ab 4",
+          "image": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "6HcTblUlOC3ziLX2Q7WiMk"
+            }
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "9sxha2f3gm24"
+            }
+          },
+          "id": "2rS75BpiHTzjwy4QTOkrEp",
+          "type": "Entry",
+          "createdAt": "2020-03-20T13:49:45.910Z",
+          "updatedAt": "2020-03-20T14:34:23.850Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 3,
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "game"
+            }
+          },
+          "locale": "en-US"
+        },
+        "fields": {
+          "name": "Drecksau",
+          "description": "Faellt mir keine ein",
+          "playersFrom": 3,
+          "playersTo": 5,
+          "duration": "5 - 10 Minuten",
+          "age": "ab 8",
+          "image": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "7FWywWTUbhPXhQgLTgKX1f"
+            }
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "9sxha2f3gm24"
+            }
+          },
+          "id": "4xJ2jbMZUc2DLC8R7gBepI",
+          "type": "Entry",
+          "createdAt": "2020-03-20T13:48:31.942Z",
+          "updatedAt": "2020-03-20T14:04:10.373Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 2,
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "game"
+            }
+          },
+          "locale": "en-US"
+        },
+        "fields": {
+          "name": "Monopoli",
+          "playersFrom": 2,
+          "playersTo": 10,
+          "duration": "1 - 3 Stunden",
+          "age": "ab 8",
+          "image": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "2Txvyka47nhfVoh2Sc1OUh"
+            }
+          }
+        }
+      }
+    ],
+    "includes": {
+      "Asset": [
+        {
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "9sxha2f3gm24"
+              }
+            },
+            "id": "2Txvyka47nhfVoh2Sc1OUh",
+            "type": "Asset",
+            "createdAt": "2020-03-20T14:04:02.201Z",
+            "updatedAt": "2020-03-20T14:04:02.201Z",
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "revision": 1,
+            "locale": "en-US"
+          },
+          "fields": {
+            "title": "Mensch ärgere dich nicht",
+            "description": "Mensch ärgere dich nicht",
+            "file": {
+              "url": "//images.ctfassets.net/9sxha2f3gm24/2Txvyka47nhfVoh2Sc1OUh/d277e6dc09f15b5bb5a134ff7082fe4a/photo-1582921017967-79d1cb6702ee",
+              "details": {
+                "size": 192767,
+                "image": {
+                  "width": 2100,
+                  "height": 1400
+                }
+              },
+              "fileName": "photo-1582921017967-79d1cb6702ee",
+              "contentType": "image/jpeg"
+            }
+          }
+        },
+        {
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "9sxha2f3gm24"
+              }
+            },
+            "id": "6HcTblUlOC3ziLX2Q7WiMk",
+            "type": "Asset",
+            "createdAt": "2020-03-20T14:37:24.532Z",
+            "updatedAt": "2020-03-20T14:37:24.532Z",
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "revision": 1,
+            "locale": "en-US"
+          },
+          "fields": {
+            "title": "Mensch ärgere dich nicht",
+            "file": {
+              "url": "//images.ctfassets.net/9sxha2f3gm24/6HcTblUlOC3ziLX2Q7WiMk/bba074bc619872ef2ecca7d68b7b645e/Mens_Erger_Je_Niet_Bordspel_1.jpg",
+              "details": {
+                "size": 59622,
+                "image": {
+                  "width": 960,
+                  "height": 640
+                }
+              },
+              "fileName": "Mens_Erger_Je_Niet_Bordspel_1.jpg",
+              "contentType": "image/jpeg"
+            }
+          }
+        },
+        {
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "9sxha2f3gm24"
+              }
+            },
+            "id": "7FWywWTUbhPXhQgLTgKX1f",
+            "type": "Asset",
+            "createdAt": "2020-03-20T14:34:12.395Z",
+            "updatedAt": "2020-03-20T14:34:12.395Z",
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "revision": 1,
+            "locale": "en-US"
+          },
+          "fields": {
+            "title": "Drecksau",
+            "file": {
+              "url": "//images.ctfassets.net/9sxha2f3gm24/7FWywWTUbhPXhQgLTgKX1f/e77d62d2adc9ca0ad0dac5bc6051fe4d/4002051740276_600x600_2x.jpg",
+              "details": {
+                "size": 72341,
+                "image": {
+                  "width": 600,
+                  "height": 741
+                }
+              },
+              "fileName": "4002051740276_600x600@2x.jpg",
+              "contentType": "image/jpeg"
+            }
+          }
+        }
+      ]
+    }
+  }
+  

@@ -16,11 +16,14 @@
 }
 
 .image {
-    margin-right: .6rem;
-    object-fit: contain;
+    flex-basis: 200px;
+    align-self: center;
 
-    max-width: 300px;
-    max-height: 300px;
+    margin-right: .6rem;
+    object-fit: cover;
+
+    height: 200px;
+    max-width: 200px;
 }
 
 .name {
@@ -41,18 +44,12 @@
     color: darkcyan;
 }
 
-@media (min-width: 450px) {
-    .image {
-        max-width: 400px;
-    }
-}
-
 @media (min-width: 900px) {
     .container {
         flex-direction: row;
         align-items: flex-start;
     }
     .image {
-        max-width: 300px;
+        flex-basis: 300px;
     }
 }

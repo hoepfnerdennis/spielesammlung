@@ -2,9 +2,6 @@ import React, { memo } from 'react';
 import styles from './styles.module.css';
 import { IGame } from '../List/types';
 
-const src =
-  'https://images.unsplash.com/photo-1582921017967-79d1cb6702ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=50';
-
 const Entry: React.SFC<IGame> = ({
   name,
   description,
@@ -12,11 +9,12 @@ const Entry: React.SFC<IGame> = ({
   playersTo,
   age,
   duration,
+  image,
 }): JSX.Element => {
   return (
     <div className={styles.border}>
       <div className={styles.container}>
-        <img src={src} alt="img" className={styles.image} />
+        <img src={image} alt={`Bild von ${name}`} className={styles.image} />
         <div>
           <h2 className={styles.name}>{name}</h2>
           <p className={styles.description}>{description}</p>

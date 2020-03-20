@@ -28,7 +28,7 @@ const List: React.FC = (): JSX.Element => {
           valueSuffix="Spieler"
         />
       </div>
-      {games.map(({ age, description, duration, name, playersFrom, playersTo }) => (
+      {games.map(({ age, description, duration, name, playersFrom, playersTo, image }) => (
         <Entry
           key={name}
           age={age}
@@ -37,6 +37,7 @@ const List: React.FC = (): JSX.Element => {
           name={name}
           playersFrom={playersFrom}
           playersTo={playersTo}
+          image={image}
         />
       ))}
     </>
