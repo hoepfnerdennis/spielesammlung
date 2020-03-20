@@ -30,7 +30,7 @@ const Entry: React.SFC<IGame> = ({
             <span role="img" aria-label="Altersempfehlung">
               📅
             </span>
-            <b className={styles.highlight}>{age}</b>
+            <b className={styles.highlight}>ab {age} Jahren</b>
           </p>
           <p className={styles.players}>
             <span role="img" aria-label="Spieldauer">

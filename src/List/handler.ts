@@ -1,110 +1,149 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { IGame, IAPIResponse, IAsset } from './types';
 
 type FilterValues = number[];
 type FilterFunction = (value: number) => void;
+type SearchFunction = (name: string) => void;
 
 const order = (a: number, b: number): number => a - b;
 
 const SPACE_ID = '9sxha2f3gm24';
 const API_TOKEN = '7LDIC95TsrYOfZwEQnbAuMHtij97kfk5r1dIRiGqT8M';
-// For local testing replace URI with
-// const URI = 'http://localhost:3001/response.json';
-const URI = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/master/entries?access_token=${API_TOKEN}`;
+// For local testing replace BASE_URI with
+// const BASE_URI = 'http://localhost:3001/response.json';
+const BASE_URI = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/master/entries?access_token=${API_TOKEN}`;
 
-const useGames = (): [IGame[], FilterValues, FilterValues, FilterFunction, FilterFunction] => {
-  const [allGames, setAllGames] = useState<IGame[]>([]);
+const useGames = (): [
+  IGame[],
+  FilterValues,
+  FilterFunction,
+  FilterValues,
+  FilterFunction,
+  SearchFunction
+] => {
   const [games, setGames] = useState<IGame[]>([]);
 
   const [filterByPlayersFromValue, setFilterByPlayersFromValue] = useState<number | undefined>();
   const [filterByPlayersToValue, setFilterByPlayersToValue] = useState<number | undefined>();
+  const [searchTerm, setSearchTerm] = useState<string | undefined>();
 
-  useEffect(() => {
+  const mapResultsToGames = (results: IAPIResponse): IGame[] => {
     const findImageForGame = (assets: IAsset[], id: string): string => {
       return assets.find(asset => asset.sys.id === id)?.fields.file.url || '';
     };
-
-    const loadGames = async (): Promise<void> => {
-      try {
-        const response = await fetch(URI);
-        const data: IAPIResponse = await response.json();
-        const gamesFromAPI: IGame[] = data.items.map(item => {
-          const {
-            age,
-            description,
-            duration,
-            name,
-            playersFrom,
-            playersTo,
-            image: imageRef,
-          } = item.fields;
-          const gameItem: IGame = {
-            age,
-            description,
-            duration,
-            name,
-            playersFrom,
-            playersTo,
-            image: '',
-          };
-          if (imageRef && data.includes?.Asset) {
-            const image: string = findImageForGame(data.includes.Asset, imageRef.sys.id);
-            gameItem.image = image;
-          }
-          return gameItem;
-        });
-        setAllGames(gamesFromAPI);
-        setGames(gamesFromAPI);
-      } catch {
-        setAllGames([]);
-        setGames([]);
+    return results.items.map(item => {
+      const {
+        age,
+        description,
+        duration,
+        name,
+        playersFrom,
+        playersTo,
+        image: imageRef,
+      } = item.fields;
+      const gameItem: IGame = {
+        age,
+        description,
+        duration,
+        name,
+        playersFrom,
+        playersTo,
+        image: '',
+      };
+      if (imageRef && results.includes?.Asset) {
+        const image: string = findImageForGame(results.includes.Asset, imageRef.sys.id);
+        gameItem.image = image;
       }
-    };
-    loadGames();
+      return gameItem;
+    });
+  };
+
+  const loadGames = useCallback(async (url: string): Promise<void> => {
+    try {
+      const response = await fetch(url);
+      const data: IAPIResponse = await response.json();
+      const gamesFromAPI: IGame[] = mapResultsToGames(data);
+      setGames(gamesFromAPI);
+    } catch {
+      setGames([]);
+    }
   }, []);
 
+  useEffect(() => {
+    loadGames(BASE_URI);
+  }, [loadGames]);
+
+  const performSearch = (
+    from: number | undefined,
+    to: number | undefined,
+    term: string | undefined
+  ): void => {
+    let url = `${BASE_URI}&content_type=game`;
+    if (from) {
+      url += `&fields.playersFrom[lte]=${from}`; // &fields.playersTo[gte]=${from}`;
+    }
+    if (to) {
+      url += `&fields.playersTo[gte]=${to}`; // &fields.playersFrom[lte]=${to}`;
+    }
+    if (term) {
+      url += `&fields.name[match]=${term}`;
+    }
+    loadGames(url);
+  };
+
   const playersFromValues: number[] = useMemo(() => {
-    return allGames
+    return games
       .map(game => game.playersFrom)
       .filter((players, index, array) => array.indexOf(players) === index)
       .sort(order);
-  }, [allGames]);
+  }, [games]);
 
   const playersToValues: number[] = useMemo(() => {
-    return allGames
+    return games
       .map(game => game.playersTo)
       .filter((players, index, array) => array.indexOf(players) === index)
       .sort(order);
-  }, [allGames]);
-
-  useEffect(() => {
-    let filteredGames = allGames;
-    if (filterByPlayersFromValue) {
-      filteredGames = filteredGames.filter(game => game.playersFrom === filterByPlayersFromValue);
-    }
-    if (filterByPlayersToValue) {
-      filteredGames = filteredGames.filter(game => game.playersTo === filterByPlayersToValue);
-    }
-    setGames(filteredGames);
-  }, [allGames, filterByPlayersFromValue, filterByPlayersToValue]);
+  }, [games]);
 
   const filterByPlayersFrom = (value: number): void => {
     if (value) {
       setFilterByPlayersFromValue(value);
+      performSearch(value, filterByPlayersToValue, searchTerm);
     } else {
       setFilterByPlayersFromValue(undefined);
+      performSearch(undefined, filterByPlayersToValue, searchTerm);
     }
   };
 
   const filterByPlayersTo = (value: number): void => {
     if (value) {
       setFilterByPlayersToValue(value);
+      performSearch(filterByPlayersFromValue, value, searchTerm);
     } else {
       setFilterByPlayersToValue(undefined);
+      performSearch(filterByPlayersFromValue, undefined, searchTerm);
     }
   };
 
-  return [games, playersFromValues, playersToValues, filterByPlayersFrom, filterByPlayersTo];
+  const searchForName = (term: string): void => {
+    if (term?.length > 1) {
+      const lowerTerm = term.toLowerCase();
+      setSearchTerm(lowerTerm);
+      performSearch(filterByPlayersFromValue, filterByPlayersToValue, lowerTerm);
+    } else {
+      setSearchTerm(undefined);
+      performSearch(filterByPlayersFromValue, filterByPlayersToValue, undefined);
+    }
+  };
+
+  return [
+    games,
+    playersFromValues,
+    filterByPlayersFrom,
+    playersToValues,
+    filterByPlayersTo,
+    searchForName,
+  ];
 };
 
 export default useGames;

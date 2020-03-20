@@ -3,30 +3,37 @@ import styles from './styles.module.css';
 import Entry from '../Entry';
 import useGames from './handler';
 import Select from '../Select';
+import Search from '../Search';
 
 const List: React.FC = (): JSX.Element => {
   const [
     games,
     playersFromValues,
-    playersToValues,
     filterByPlayersFrom,
+    playersToValues,
     filterByPlayersTo,
+    searchForName,
   ] = useGames();
+
   return (
     <>
       <div className={styles.filters}>
-        <Select
-          values={playersFromValues}
-          onChange={filterByPlayersFrom}
-          label="ab"
-          valueSuffix="Spieler"
-        />
-        <Select
-          values={playersToValues}
-          onChange={filterByPlayersTo}
-          label="bis"
-          valueSuffix="Spieler"
-        />
+        <span>{games.length} Spiele</span>
+        <Search onSearch={searchForName} />
+        <div>
+          <Select
+            values={playersFromValues}
+            onChange={filterByPlayersFrom}
+            label="ab"
+            valueSuffix="Spieler"
+          />
+          <Select
+            values={playersToValues}
+            onChange={filterByPlayersTo}
+            label="bis"
+            valueSuffix="Spieler"
+          />
+        </div>
       </div>
       {games.map(({ age, description, duration, name, playersFrom, playersTo, image }) => (
         <Entry
