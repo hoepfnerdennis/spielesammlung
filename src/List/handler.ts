@@ -51,6 +51,7 @@ const useGames = (): [
           name,
           playersFrom,
           playersTo,
+          favorite,
           image: imageRef,
         } = item.fields;
         const gameItem: IGame = {
@@ -60,6 +61,7 @@ const useGames = (): [
           name,
           playersFrom,
           playersTo,
+          favorite,
           image: '',
         };
         if (imageRef && results.includes?.Asset) {

@@ -11,7 +11,7 @@ const App: React.SFC = () => {
       <main>
         <List />
       </main>
-      {/* <footer>footer</footer> */}
+      <footer>★ = Spielempfehlung</footer>
     </div>
   );
 };

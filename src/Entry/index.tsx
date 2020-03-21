@@ -10,6 +10,7 @@ const Entry: React.SFC<IGame> = ({
   playersTo,
   age,
   duration,
+  favorite,
   image,
 }): JSX.Element => {
   const entryRef = createRef<HTMLDivElement>();
@@ -17,8 +18,15 @@ const Entry: React.SFC<IGame> = ({
   return (
     <div className={styles.border} ref={entryRef}>
       <div className={styles.container}>
+        <div className={styles.fav}>
+          {favorite && (
+            <span role="img" aria-label="Spielempfehlung">
+              ★
+            </span>
+          )}
+        </div>
         {intersecting && <img src={image} alt={`Bild von ${name}`} className={styles.image} />}
-        <div>
+        <div className={styles.info}>
           <h2 className={styles.name}>{name}</h2>
           <p className={styles.description}>{description}</p>
           <p className={styles.players}>
@@ -26,7 +34,7 @@ const Entry: React.SFC<IGame> = ({
               👤
             </span>
             <b className={styles.highlight}>
-              {playersFrom === playersTo ? playersFrom : `${playersFrom} - ${playersTo}`}
+              {playersFrom === playersTo ? playersFrom : `${playersFrom} - ${playersTo}`} Spieler
             </b>
           </p>
           <p className={styles.players}>

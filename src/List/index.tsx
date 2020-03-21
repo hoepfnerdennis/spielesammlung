@@ -37,18 +37,21 @@ const List: React.FC = (): JSX.Element => {
           />
         </div>
       </div>
-      {games.map(({ age, description, duration, name, playersFrom, playersTo, image }) => (
-        <Entry
-          key={name}
-          age={age}
-          description={description}
-          duration={duration}
-          name={name}
-          playersFrom={playersFrom}
-          playersTo={playersTo}
-          image={image}
-        />
-      ))}
+      {games.map(
+        ({ age, description, duration, name, playersFrom, playersTo, favorite, image }) => (
+          <Entry
+            key={name}
+            age={age}
+            description={description}
+            duration={duration}
+            name={name}
+            playersFrom={playersFrom}
+            playersTo={playersTo}
+            favorite={favorite}
+            image={image}
+          />
+        )
+      )}
     </>
   );
 };

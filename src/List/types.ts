@@ -5,6 +5,7 @@ interface IBaseGame {
   playersTo: number;
   age: string;
   duration: string;
+  favorite: boolean;
 }
 
 export interface IGame extends IBaseGame {
