@@ -19,8 +19,10 @@ const List: React.FC = (): JSX.Element => {
     <>
       <div className={styles.filters}>
         <span>{games.length} Spiele</span>
-        <Search onSearch={searchForName} />
-        <div>
+        <div className={styles.element}>
+          <Search onSearch={searchForName} />
+        </div>
+        <div className={styles.element}>
           <Select
             values={playersFromValues}
             onChange={filterByPlayersFrom}
