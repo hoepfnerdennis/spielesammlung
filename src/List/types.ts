@@ -6,6 +6,7 @@ interface IBaseGame {
   age: string;
   duration: string;
   favorite: boolean;
+  simpleRules: boolean;
 }
 
 export interface IGame extends IBaseGame {

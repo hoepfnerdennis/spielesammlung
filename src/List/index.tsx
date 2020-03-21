@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './styles.module.css';
-import Entry from '../Entry';
+import Entry from './Entry';
 import useGames from './handler';
-import Select from '../Select';
-import Search from '../Search';
+import Select from './Select';
+import Search from './Search';
+import Checkbox from './Checkbox';
 
 const List: React.FC = (): JSX.Element => {
   const [
@@ -13,6 +14,8 @@ const List: React.FC = (): JSX.Element => {
     playersToValues,
     filterByPlayersTo,
     searchForName,
+    filterByFavoriteValue,
+    filterByFavorite,
   ] = useGames();
 
   return (
@@ -36,9 +39,26 @@ const List: React.FC = (): JSX.Element => {
             valueSuffix="Spieler"
           />
         </div>
+        <div className={styles.element}>
+          <Checkbox
+            checked={filterByFavoriteValue || false}
+            label="Nur Empfehlungen"
+            onChange={filterByFavorite}
+          />
+        </div>
       </div>
       {games.map(
-        ({ age, description, duration, name, playersFrom, playersTo, favorite, image }) => (
+        ({
+          age,
+          description,
+          duration,
+          name,
+          playersFrom,
+          playersTo,
+          favorite,
+          simpleRules,
+          image,
+        }) => (
           <Entry
             key={name}
             age={age}
@@ -48,6 +68,7 @@ const List: React.FC = (): JSX.Element => {
             playersFrom={playersFrom}
             playersTo={playersTo}
             favorite={favorite}
+            simpleRules={simpleRules}
             image={image}
           />
         )

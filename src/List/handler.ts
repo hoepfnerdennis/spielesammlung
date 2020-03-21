@@ -4,6 +4,7 @@ import { IGame, IAPIResponse, IAsset } from './types';
 type FilterValues = number[];
 type FilterFunction = (value: number) => void;
 type SearchFunction = (name: string) => void;
+type FilterBoolFunction = (value: boolean) => void;
 
 const order = (a: number, b: number): number => a - b;
 const sortByName = (a: IGame, b: IGame): number => {
@@ -30,12 +31,15 @@ const useGames = (): [
   FilterFunction,
   FilterValues,
   FilterFunction,
-  SearchFunction
+  SearchFunction,
+  boolean | undefined,
+  FilterBoolFunction
 ] => {
   const [games, setGames] = useState<IGame[]>([]);
 
   const [filterByPlayersFromValue, setFilterByPlayersFromValue] = useState<number | undefined>();
   const [filterByPlayersToValue, setFilterByPlayersToValue] = useState<number | undefined>();
+  const [filterByFavoriteValue, setFilterByFavoriteValue] = useState<boolean | undefined>();
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
 
   const mapResultsToGames = (results: IAPIResponse): IGame[] => {
@@ -52,6 +56,7 @@ const useGames = (): [
           playersFrom,
           playersTo,
           favorite,
+          simpleRules,
           image: imageRef,
         } = item.fields;
         const gameItem: IGame = {
@@ -62,6 +67,7 @@ const useGames = (): [
           playersFrom,
           playersTo,
           favorite,
+          simpleRules,
           image: '',
         };
         if (imageRef && results.includes?.Asset) {
@@ -91,7 +97,8 @@ const useGames = (): [
   const performSearch = (
     from: number | undefined,
     to: number | undefined,
-    term: string | undefined
+    term: string | undefined,
+    favorite: boolean | undefined
   ): void => {
     let url = `${BASE_URI}&content_type=game`;
     if (from) {
@@ -102,6 +109,9 @@ const useGames = (): [
     }
     if (term) {
       url += `&fields.name[match]=${term}`;
+    }
+    if (favorite) {
+      url += `&fields.favorite=${favorite}`;
     }
     loadGames(url);
   };
@@ -123,20 +133,20 @@ const useGames = (): [
   const filterByPlayersFrom = (value: number): void => {
     if (value) {
       setFilterByPlayersFromValue(value);
-      performSearch(value, filterByPlayersToValue, searchTerm);
+      performSearch(value, filterByPlayersToValue, searchTerm, filterByFavoriteValue);
     } else {
       setFilterByPlayersFromValue(undefined);
-      performSearch(undefined, filterByPlayersToValue, searchTerm);
+      performSearch(undefined, filterByPlayersToValue, searchTerm, filterByFavoriteValue);
     }
   };
 
   const filterByPlayersTo = (value: number): void => {
     if (value) {
       setFilterByPlayersToValue(value);
-      performSearch(filterByPlayersFromValue, value, searchTerm);
+      performSearch(filterByPlayersFromValue, value, searchTerm, filterByFavoriteValue);
     } else {
       setFilterByPlayersToValue(undefined);
-      performSearch(filterByPlayersFromValue, undefined, searchTerm);
+      performSearch(filterByPlayersFromValue, undefined, searchTerm, filterByFavoriteValue);
     }
   };
 
@@ -144,10 +154,30 @@ const useGames = (): [
     if (term?.length > 1) {
       const lowerTerm = term.toLowerCase();
       setSearchTerm(lowerTerm);
-      performSearch(filterByPlayersFromValue, filterByPlayersToValue, lowerTerm);
+      performSearch(
+        filterByPlayersFromValue,
+        filterByPlayersToValue,
+        lowerTerm,
+        filterByFavoriteValue
+      );
     } else {
       setSearchTerm(undefined);
-      performSearch(filterByPlayersFromValue, filterByPlayersToValue, undefined);
+      performSearch(
+        filterByPlayersFromValue,
+        filterByPlayersToValue,
+        undefined,
+        filterByFavoriteValue
+      );
+    }
+  };
+
+  const filterByFavorite = (value: boolean): void => {
+    if (value === true) {
+      setFilterByFavoriteValue(value);
+      performSearch(filterByPlayersFromValue, filterByPlayersToValue, searchTerm, value);
+    } else {
+      setFilterByFavoriteValue(undefined);
+      performSearch(filterByPlayersFromValue, filterByPlayersToValue, searchTerm, undefined);
     }
   };
 
@@ -158,6 +188,8 @@ const useGames = (): [
     playersToValues,
     filterByPlayersTo,
     searchForName,
+    filterByFavoriteValue,
+    filterByFavorite,
   ];
 };
 

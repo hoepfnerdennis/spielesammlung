@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+}
+
+.box {
+    margin-right: 1rem;
+}
+
+.players {
+    margin: 0 0 .5rem 0;
+}
+
+.highlight {
+    margin-left: .3rem;
+    color: darkcyan;
+}
