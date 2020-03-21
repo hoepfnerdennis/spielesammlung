@@ -1,6 +1,7 @@
-import React, { memo } from 'react';
+import React, { memo, createRef } from 'react';
 import styles from './styles.module.css';
 import { IGame } from '../List/types';
+import useIntersection from './intersection';
 
 const Entry: React.SFC<IGame> = ({
   name,
@@ -11,10 +12,12 @@ const Entry: React.SFC<IGame> = ({
   duration,
   image,
 }): JSX.Element => {
+  const entryRef = createRef<HTMLDivElement>();
+  const [intersecting] = useIntersection(entryRef, true, { rootMargin: '100px' });
   return (
-    <div className={styles.border}>
+    <div className={styles.border} ref={entryRef}>
       <div className={styles.container}>
-        <img src={image} alt={`Bild von ${name}`} className={styles.image} />
+        {intersecting && <img src={image} alt={`Bild von ${name}`} className={styles.image} />}
         <div>
           <h2 className={styles.name}>{name}</h2>
           <p className={styles.description}>{description}</p>

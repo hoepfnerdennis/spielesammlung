@@ -6,6 +6,17 @@ type FilterFunction = (value: number) => void;
 type SearchFunction = (name: string) => void;
 
 const order = (a: number, b: number): number => a - b;
+const sortByName = (a: IGame, b: IGame): number => {
+  const nameA = a.name.toUpperCase();
+  const nameB = b.name.toUpperCase();
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+  return 0;
+};
 
 const SPACE_ID = '9sxha2f3gm24';
 const API_TOKEN = '7LDIC95TsrYOfZwEQnbAuMHtij97kfk5r1dIRiGqT8M';
@@ -31,31 +42,33 @@ const useGames = (): [
     const findImageForGame = (assets: IAsset[], id: string): string => {
       return assets.find(asset => asset.sys.id === id)?.fields.file.url || '';
     };
-    return results.items.map(item => {
-      const {
-        age,
-        description,
-        duration,
-        name,
-        playersFrom,
-        playersTo,
-        image: imageRef,
-      } = item.fields;
-      const gameItem: IGame = {
-        age,
-        description,
-        duration,
-        name,
-        playersFrom,
-        playersTo,
-        image: '',
-      };
-      if (imageRef && results.includes?.Asset) {
-        const image: string = findImageForGame(results.includes.Asset, imageRef.sys.id);
-        gameItem.image = image;
-      }
-      return gameItem;
-    });
+    return results.items
+      .map(item => {
+        const {
+          age,
+          description,
+          duration,
+          name,
+          playersFrom,
+          playersTo,
+          image: imageRef,
+        } = item.fields;
+        const gameItem: IGame = {
+          age,
+          description,
+          duration,
+          name,
+          playersFrom,
+          playersTo,
+          image: '',
+        };
+        if (imageRef && results.includes?.Asset) {
+          const image: string = findImageForGame(results.includes.Asset, imageRef.sys.id);
+          gameItem.image = image;
+        }
+        return gameItem;
+      })
+      .sort(sortByName);
   };
 
   const loadGames = useCallback(async (url: string): Promise<void> => {
