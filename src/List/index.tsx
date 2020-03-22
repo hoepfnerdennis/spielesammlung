@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './styles.module.css';
-import Entry from './Entry';
+import Entry from '../Entry';
 import useGames from './handler';
-import Select from './Select';
-import Search from './Search';
-import Checkbox from './Checkbox';
+import Select from '../Select';
+import Search from '../Search';
+import Checkbox from '../Checkbox';
 
 const List: React.FC = (): JSX.Element => {
   const [

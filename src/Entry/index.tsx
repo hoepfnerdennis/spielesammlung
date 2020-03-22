@@ -1,8 +1,8 @@
 import React, { memo, createRef } from 'react';
 import styles from './styles.module.css';
-import { IGame } from '../types';
+import { IGame } from '../List/types';
 import useIntersection from './intersection';
-import Features from './Features';
+import Features from '../Features';
 
 const Entry: React.SFC<IGame> = ({
   name,
