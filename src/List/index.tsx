@@ -4,7 +4,7 @@ import { Store } from '../Store';
 import { IGame, IState, Dispatch } from '../Store/types';
 import Filters from '../Filters';
 
-const Entry = React.lazy(() => import(/* webpackChunkName: "Entry" */ '../Entry'));
+const Entry = React.lazy(() => import(/* webpackChunkName: "entry" */ '../Entry'));
 
 const List: React.FC = (): JSX.Element => {
   const {
