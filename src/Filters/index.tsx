@@ -9,7 +9,7 @@ import { setPlayersFrom, setPlayersTo, setFavorite } from '../Store/action';
 import Layer from '../Layer';
 
 const Filters: React.FC = (): JSX.Element => {
-  const [displayFilterLayer, setDisplayFilterLayer] = useState<boolean>(true);
+  const [displayFilterLayer, setDisplayFilterLayer] = useState<boolean>(false);
   const {
     state: { games, filters },
     dispatch,
