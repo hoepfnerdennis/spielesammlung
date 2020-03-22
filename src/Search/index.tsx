@@ -6,9 +6,7 @@ const Search: React.FC<{ onSearch: (term: string) => void }> = ({ onSearch }): J
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    if (searchTerm) {
-      onSearch(searchTerm);
-    }
+    onSearch(searchTerm);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {

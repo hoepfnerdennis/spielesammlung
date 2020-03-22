@@ -1,0 +1,22 @@
+.filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 800px;
+    margin: 1rem auto;
+}
+
+.element {
+    margin-top: 1rem;
+}
+
+@media (min-width: 900px) {
+    .filters {
+        flex-direction: row;
+    }
+    .element {
+        margin-top: 0;
+    }
+}

@@ -122,58 +122,23 @@ export interface IAPIResponse {
   };
 }
 
-/*
-{
-  "sys": {
-    "type": "Array"
-  },
-  "total": 3,
-  "skip": 0,
-  "limit": 100,
-  
-  "includes": {
-    "Asset": [
-      {
-        "sys": {
-          "space": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Space",
-              "id": "9sxha2f3gm24"
-            }
-          },
-          "id": "2Txvyka47nhfVoh2Sc1OUh",
-          "type": "Asset",
-          "createdAt": "2020-03-20T14:04:02.201Z",
-          "updatedAt": "2020-03-20T14:04:02.201Z",
-          "environment": {
-            "sys": {
-              "id": "master",
-              "type": "Link",
-              "linkType": "Environment"
-            }
-          },
-          "revision": 1,
-          "locale": "en-US"
-        },
-        "fields": {
-          "title": "Mensch ärgere dich nicht",
-          "description": "Mensch ärgere dich nicht",
-          "file": {
-            "url": "//images.ctfassets.net/9sxha2f3gm24/2Txvyka47nhfVoh2Sc1OUh/d277e6dc09f15b5bb5a134ff7082fe4a/photo-1582921017967-79d1cb6702ee",
-            "details": {
-              "size": 192767,
-              "image": {
-                "width": 2100,
-                "height": 1400
-              }
-            },
-            "fileName": "photo-1582921017967-79d1cb6702ee",
-            "contentType": "image/jpeg"
-          }
-        }
-      }
-    ]
-  }
+export interface IFilters {
+  playersFrom: string | undefined;
+  playersTo: string | undefined;
+  favorite: boolean | undefined;
+  search: string | undefined;
 }
- */
+
+export interface IState {
+  games: Array<IGame>;
+  filters: IFilters;
+}
+
+export type Reducer = (state: IState, action: IAction) => IState;
+
+export type Dispatch = React.Dispatch<IAction>;
+
+export interface IAction {
+  type: string;
+  payload: any;
+}

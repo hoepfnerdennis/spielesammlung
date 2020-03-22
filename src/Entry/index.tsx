@@ -1,6 +1,6 @@
 import React, { memo, createRef } from 'react';
 import styles from './styles.module.css';
-import { IGame } from '../List/types';
+import { IGame } from '../Store/types';
 import useIntersection from './intersection';
 import Features from '../Features';
 
