@@ -1,9 +1,9 @@
 .submit {
     margin-left: .3rem;
-    background-color: darkcyan;
+    background-color: white;
     height: 2rem;
     font-size: 1rem;
-    color: white;
+    color: darkcyan;
     border-radius: 5px;
 }
 
@@ -16,7 +16,7 @@
 .input {
     height: 1.5rem;
     /* line-height: 1.8rem; */
-    font-size: 1.2rem;
-    border: 2px solid darkcyan;
+    font-size: 1.1rem;
+    border: 2px solid white;
     border-radius: 5px;
 }

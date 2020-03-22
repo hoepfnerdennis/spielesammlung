@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from './styles.module.css';
+import { setSearchTerm } from '../Store/action';
+import { Store } from '../Store';
 
-const Search: React.FC<{ onSearch: (term: string) => void }> = ({ onSearch }): JSX.Element => {
-  const [searchTerm, setSearchTerm] = useState<string>('');
+const Search: React.FC = (): JSX.Element => {
+  const [searchTerm, setSearchTermInternal] = useState<string>('');
+  const { dispatch } = useContext(Store);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    onSearch(searchTerm);
+    setSearchTerm(dispatch)(searchTerm);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearchTerm(event.target.value);
+    setSearchTermInternal(event.target.value);
   };
 
   return (
@@ -20,7 +23,7 @@ const Search: React.FC<{ onSearch: (term: string) => void }> = ({ onSearch }): J
         value={searchTerm}
         onChange={handleChange}
         className={styles.input}
-        placeholder="Suche nach..."
+        placeholder="Spiel suchen..."
       />
       <input type="submit" value="Suchen" className={styles.submit} />
     </form>

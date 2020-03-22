@@ -1,14 +1,15 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import styles from './styles.module.css';
 import Select from '../Select';
-import Search from '../Search';
 import Checkbox from '../Checkbox';
 import { Store } from '../Store';
 import { IState, Dispatch } from '../Store/types';
 import { order } from '../utils';
-import { setSearchTerm, setPlayersFrom, setPlayersTo, setFavorite } from '../Store/action';
+import { setPlayersFrom, setPlayersTo, setFavorite } from '../Store/action';
+import Layer from '../Layer';
 
 const Filters: React.FC = (): JSX.Element => {
+  const [displayFilterLayer, setDisplayFilterLayer] = useState<boolean>(true);
   const {
     state: { games, filters },
     dispatch,
@@ -32,34 +33,44 @@ const Filters: React.FC = (): JSX.Element => {
     [games]
   );
 
+  if (displayFilterLayer) {
+    return (
+      <Layer closeLayer={(): void => setDisplayFilterLayer(false)}>
+        <h2 className={styles.headline}>Filtere die Spiele</h2>
+        <div className={styles.element}>
+          <Select
+            values={playersFromValues}
+            onChange={setPlayersFrom(dispatch)}
+            label="Nur Spiele ab"
+            valueSuffix="Spieler"
+          />
+        </div>
+        <div className={styles.element}>
+          <Select
+            values={playersToValues}
+            onChange={setPlayersTo(dispatch)}
+            label="Nur Spiele bis"
+            valueSuffix="Spieler"
+          />
+        </div>
+        <div className={styles.element}>
+          <Checkbox
+            checked={filters.favorite || false}
+            label={filters.favorite ? 'Alle Spiele anzeigen' : 'Nur Empfehlungen anzeigen'}
+            onChange={setFavorite(dispatch)}
+          />
+        </div>
+      </Layer>
+    );
+  }
+
   return (
-    <div className={styles.filters}>
-      <span>{games.length} Spiele</span>
-      <div className={styles.element}>
-        <Search onSearch={setSearchTerm(dispatch)} />
-      </div>
-      <div className={styles.element}>
-        <Select
-          values={playersFromValues}
-          onChange={setPlayersFrom(dispatch)}
-          label="ab"
-          valueSuffix="Spieler"
-        />
-        <Select
-          values={playersToValues}
-          onChange={setPlayersTo(dispatch)}
-          label="bis"
-          valueSuffix="Spieler"
-        />
-      </div>
-      <div className={styles.element}>
-        <Checkbox
-          checked={filters.favorite || false}
-          label="Nur Empfehlungen"
-          onChange={setFavorite(dispatch)}
-        />
-      </div>
-    </div>
+    <button
+      type="button"
+      className={styles.button}
+      onClick={(): void => setDisplayFilterLayer(true)}>
+      Filter anzeigen
+    </button>
   );
 };
 

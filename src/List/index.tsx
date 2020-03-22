@@ -3,6 +3,7 @@ import { fetchGamesAction } from '../Store/action';
 import { Store } from '../Store';
 import { IGame, IState, Dispatch } from '../Store/types';
 import Filters from '../Filters';
+import styles from './styles.module.css';
 
 const Entry = React.lazy(() => import(/* webpackChunkName: "entry" */ '../Entry'));
 
@@ -18,7 +19,10 @@ const List: React.FC = (): JSX.Element => {
 
   return (
     <>
-      <Filters />
+      <div className={styles.filterContainer}>
+        <span>{games.length} Spiele</span>
+        <Filters />
+      </div>
       {games.map(
         ({
           age,
