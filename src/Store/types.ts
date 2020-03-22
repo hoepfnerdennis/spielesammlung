@@ -123,8 +123,8 @@ export interface IAPIResponse {
 }
 
 export interface IFilters {
-  playersFrom: string | undefined;
-  playersTo: string | undefined;
+  playersFrom: number | undefined;
+  playersTo: number | undefined;
   favorite: boolean | undefined;
   search: string | undefined;
 }

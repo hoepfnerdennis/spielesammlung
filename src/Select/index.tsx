@@ -3,12 +3,19 @@ import styles from './styles.module.css';
 
 type SelectProps = {
   values: Array<number>;
+  value: number | undefined;
   onChange: (value: number) => void;
   label: string;
   valueSuffix?: string;
 };
 
-const Select: React.SFC<SelectProps> = ({ label, onChange, values, valueSuffix }): JSX.Element => {
+const Select: React.SFC<SelectProps> = ({
+  label,
+  onChange,
+  values,
+  valueSuffix,
+  value,
+}): JSX.Element => {
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       onChange(parseInt(event.target.value, 10));
@@ -19,7 +26,12 @@ const Select: React.SFC<SelectProps> = ({ label, onChange, values, valueSuffix }
   return (
     <label htmlFor={label} className={styles.container}>
       {label}
-      <select name={label} id={label} onChange={handleChange} className={styles.selectbox}>
+      <select
+        name={label}
+        id={label}
+        onChange={handleChange}
+        className={styles.selectbox}
+        value={value}>
         <option value="">alle</option>
         {values.map(value => (
           <option key={value} value={value}>
@@ -32,4 +44,7 @@ const Select: React.SFC<SelectProps> = ({ label, onChange, values, valueSuffix }
   );
 };
 
-export default memo(Select, (pp, np) => pp.values === np.values);
+export default memo(
+  Select,
+  (pp, np) => pp.values.join() === np.values.join() && pp.value === np.value
+);

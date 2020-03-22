@@ -40,6 +40,7 @@ const Filters: React.FC = (): JSX.Element => {
         <div className={styles.element}>
           <Select
             values={playersFromValues}
+            value={filters.playersFrom}
             onChange={setPlayersFrom(dispatch)}
             label="Nur Spiele ab"
             valueSuffix="Spieler"
@@ -48,6 +49,7 @@ const Filters: React.FC = (): JSX.Element => {
         <div className={styles.element}>
           <Select
             values={playersToValues}
+            value={filters.playersTo}
             onChange={setPlayersTo(dispatch)}
             label="Nur Spiele bis"
             valueSuffix="Spieler"
