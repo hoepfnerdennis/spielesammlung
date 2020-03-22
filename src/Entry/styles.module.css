@@ -52,4 +52,7 @@
     .container {
         flex-direction: row;
     }
+    .imageContainer {
+        align-self: flex-start;
+    }
 }
