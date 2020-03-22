@@ -20,7 +20,9 @@ const Entry: React.SFC<IGame> = ({
   return (
     <div className={styles.border} ref={entryRef}>
       <div className={`${styles.container} ${favorite ? styles.fav : ''}`}>
-        {intersecting && <img src={image} alt={`Bild von ${name}`} className={styles.image} />}
+        <div className={styles.imageContainer}>
+          {intersecting && <img src={image} alt={`Bild von ${name}`} className={styles.image} />}
+        </div>
         <div className={styles.info}>
           <h2 className={styles.name}>{name}</h2>
           <p className={styles.description}>{description}</p>
