@@ -31,7 +31,9 @@ export const mapResultsToGames = (results: IAPIResponse): IGame[] => {
         simpleRules,
         image: imageRef,
       } = item.fields;
+      const { id } = item.sys;
       const gameItem: IGame = {
+        id,
         age,
         description,
         duration,

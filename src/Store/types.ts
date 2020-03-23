@@ -1,4 +1,5 @@
 interface IBaseGame {
+  id: string;
   name: string;
   description: string;
   playersFrom: number;

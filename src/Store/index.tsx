@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import { IState, Reducer, IAction } from './types';
 
-export const FETCH_DATA_FINISHED = 'FETCH_DATA_FINISHED';
+export const SET_GAMES = 'SET_GAMES';
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
 export const SET_PALYER_FROM = 'SET_PALYER_FROM';
 export const SET_PLAYER_TO = 'SET_PLAYER_TO';
@@ -21,7 +21,7 @@ export const Store = createContext<IState | any>(initialState);
 
 const reducer = (state: IState, action: IAction): IState => {
   switch (action.type) {
-    case FETCH_DATA_FINISHED:
+    case SET_GAMES:
       return { ...state, games: action.payload };
 
     case SET_PALYER_FROM:

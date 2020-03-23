@@ -1,11 +1,5 @@
 import { IGame, IAPIResponse, IFilters, Dispatch } from './types';
-import {
-  FETCH_DATA_FINISHED,
-  SET_SEARCH_TERM,
-  SET_PALYER_FROM,
-  SET_PLAYER_TO,
-  SET_FAVORITE,
-} from '.';
+import { SET_GAMES, SET_SEARCH_TERM, SET_PALYER_FROM, SET_PLAYER_TO, SET_FAVORITE } from '.';
 import { mapResultsToGames } from '../utils';
 
 const SPACE_ID = '9sxha2f3gm24';
@@ -34,12 +28,12 @@ export const fetchGamesAction = async (filters: IFilters, dispatch: Dispatch): P
     const data: IAPIResponse = await response.json();
     const gamesFromAPI: IGame[] = mapResultsToGames(data);
     dispatch({
-      type: FETCH_DATA_FINISHED,
+      type: SET_GAMES,
       payload: gamesFromAPI,
     });
   } catch {
     dispatch({
-      type: FETCH_DATA_FINISHED,
+      type: SET_GAMES,
       payload: [],
     });
   }

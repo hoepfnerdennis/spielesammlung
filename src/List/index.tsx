@@ -25,6 +25,7 @@ const List: React.FC = (): JSX.Element => {
       </div>
       {games.map(
         ({
+          id,
           age,
           description,
           duration,
@@ -35,8 +36,9 @@ const List: React.FC = (): JSX.Element => {
           simpleRules,
           image,
         }: IGame) => (
-          <Suspense fallback={null} key={name}>
+          <Suspense fallback={null} key={id}>
             <Entry
+              id={id}
               age={age}
               description={description}
               duration={duration}
