@@ -4,7 +4,7 @@ const useIntersection = (
   nodeRef: React.RefObject<HTMLElement>,
   triggerOnce = false,
   observerOptions?: IntersectionObserverInit
-): [boolean] => {
+): boolean => {
   const observerRef = useRef<IntersectionObserver | undefined>();
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
 
@@ -34,7 +34,7 @@ const useIntersection = (
   useEffect(() => {
     const currentNode = nodeRef.current;
 
-    if (IntersectionObserver && currentNode) {
+    if (typeof IntersectionObserver !== 'undefined' && currentNode) {
       observerRef.current = new IntersectionObserver(observerCallback, observerOptions);
       observerRef.current.observe(currentNode);
     }
@@ -47,7 +47,7 @@ const useIntersection = (
     };
   }, [nodeRef, observerCallback, observerOptions]);
 
-  return [isIntersecting];
+  return isIntersecting;
 };
 
 export default useIntersection;

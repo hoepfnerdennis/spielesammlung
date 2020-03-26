@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should render checked 1`] = `
+<div>
+  <button
+    class="checked"
+    type="button"
+  >
+    label
+  </button>
+</div>
+`;
+
+exports[`Checkbox should render unchecked 1`] = `
+<div>
+  <button
+    class="unchecked"
+    type="button"
+  >
+    label
+  </button>
+</div>
+`;

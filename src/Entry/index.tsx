@@ -16,8 +16,8 @@ const Entry: React.SFC<IGame> = ({
   image,
 }): JSX.Element => {
   const entryRef = createRef<HTMLDivElement>();
-  const [intersecting] = useIntersection(entryRef, true);
-  const [intersectingWithMargin] = useIntersection(entryRef, true, { rootMargin: '200px' });
+  const intersecting = useIntersection(entryRef, true);
+  const intersectingWithMargin = useIntersection(entryRef, true, { rootMargin: '200px' });
 
   useEffect(() => {
     if (intersectingWithMargin) {
