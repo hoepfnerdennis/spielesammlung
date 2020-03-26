@@ -3,12 +3,13 @@ import styles from './styles.module.scss';
 
 const Checkbox: React.SFC<{
   label: string;
-  onChange: (value: boolean) => void;
+  onChange: (value: string | undefined) => void;
   checked: boolean;
 }> = ({ label, onChange, checked }): JSX.Element => {
   const handleClick = (): void => {
-    onChange(!checked);
+    onChange(!checked ? 'true' : undefined);
   };
+
   return (
     <button
       type="button"

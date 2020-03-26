@@ -1,78 +1,81 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import styles from './styles.module.css';
 import Select from '../Select';
 import Checkbox from '../Checkbox';
-import { Store } from '../Store';
-import { IState, Dispatch } from '../Store/types';
 import { order } from '../utils';
-import { setPlayersFrom, setPlayersTo, setFavorite } from '../Store/action';
 import Layer from '../Layer';
+import { IGame, ActiveFiltersMap, FilterKey, SetFilterFunc } from '../Store/types';
 
-const Filters: React.FC = (): JSX.Element => {
+const Filters: React.FC<{
+  games: IGame[];
+  setFilter: SetFilterFunc;
+  activeFilters: ActiveFiltersMap;
+}> = ({ games, setFilter, activeFilters }): JSX.Element => {
   const [displayFilterLayer, setDisplayFilterLayer] = useState<boolean>(false);
-  const {
-    state: { games, filters },
-    dispatch,
-  }: { state: IState; dispatch: Dispatch } = useContext(Store);
 
-  const playersFromValues: number[] = useMemo(
+  const playersFromValues: string[] = useMemo(
     () =>
       games
         .map(game => game.playersFrom)
         .filter((players, index, array) => array.indexOf(players) === index)
-        .sort(order),
+        .sort(order)
+        .map(f => f.toString()),
     [games]
   );
 
-  const playersToValues: number[] = useMemo(
+  const playersToValues: string[] = useMemo(
     () =>
       games
         .map(game => game.playersTo)
         .filter((players, index, array) => array.indexOf(players) === index)
-        .sort(order),
+        .sort(order)
+        .map(f => f.toString()),
     [games]
   );
 
-  if (displayFilterLayer) {
-    return (
-      <Layer closeLayer={(): void => setDisplayFilterLayer(false)}>
-        <h2 className={styles.headline}>Filtere die Spiele</h2>
-        <div className={styles.element}>
-          <Select
-            values={playersFromValues}
-            value={filters.playersFrom}
-            onChange={setPlayersFrom(dispatch)}
-            label="Nur Spiele ab"
-            valueSuffix="Spieler"
-          />
-        </div>
-        <div className={styles.element}>
-          <Select
-            values={playersToValues}
-            value={filters.playersTo}
-            onChange={setPlayersTo(dispatch)}
-            label="Nur Spiele bis"
-            valueSuffix="Spieler"
-          />
-        </div>
-        <div className={styles.element}>
-          <Checkbox
-            checked={filters.favorite || false}
-            label={filters.favorite ? 'Alle Spiele anzeigen' : 'Nur Empfehlungen anzeigen'}
-            onChange={setFavorite(dispatch)}
-          />
-        </div>
-      </Layer>
-    );
-  }
-
   return (
-    <button
-      type="button"
-      className={styles.button}
-      onClick={(): void => setDisplayFilterLayer(true)}>
-      Filter anzeigen
-    </button>
+    <>
+      <button
+        type="button"
+        className={styles.button}
+        onClick={(): void => setDisplayFilterLayer(true)}>
+        Filter anzeigen
+      </button>
+      {displayFilterLayer && (
+        <Layer closeLayer={(): void => setDisplayFilterLayer(false)}>
+          <h2 className={styles.headline}>Filtere die Spiele</h2>
+          <div className={styles.element}>
+            <Select
+              values={playersFromValues}
+              value={activeFilters.get(FilterKey.playersFrom) || ''}
+              onChange={setFilter(FilterKey.playersFrom)}
+              label="Nur Spiele ab"
+              valueSuffix="Spieler"
+            />
+          </div>
+          <div className={styles.element}>
+            <Select
+              values={playersToValues}
+              value={activeFilters.get(FilterKey.playersTo) || ''}
+              onChange={setFilter(FilterKey.playersTo)}
+              label="Nur Spiele bis"
+              valueSuffix="Spieler"
+            />
+          </div>
+          <div className={styles.element}>
+            <Checkbox
+              checked={activeFilters.has(FilterKey.favorite)}
+              label={
+                activeFilters.get(FilterKey.favorite)
+                  ? 'Alle Spiele anzeigen'
+                  : 'Nur Empfehlungen anzeigen'
+              }
+              onChange={setFilter(FilterKey.favorite)}
+            />
+          </div>
+        </Layer>
+      )}
+    </>
   );
 };
 

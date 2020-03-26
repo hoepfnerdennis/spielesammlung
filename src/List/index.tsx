@@ -1,27 +1,20 @@
-import React, { useContext, useEffect, Suspense } from 'react';
-import { fetchGamesAction } from '../Store/action';
-import { Store } from '../Store';
-import { IGame, IState, Dispatch } from '../Store/types';
+import React, { Suspense } from 'react';
+import { IGame, ActiveFiltersMap, SetFilterFunc } from '../Store/types';
 import Filters from '../Filters';
 import styles from './styles.module.css';
 
 const Entry = React.lazy(() => import(/* webpackChunkName: "entry" */ '../Entry'));
 
-const List: React.FC = (): JSX.Element => {
-  const {
-    state: { games, filters },
-    dispatch,
-  }: { state: IState; dispatch: Dispatch } = useContext(Store);
-
-  useEffect(() => {
-    fetchGamesAction(filters, dispatch);
-  }, [dispatch, filters]);
-
+const List: React.SFC<{
+  games: IGame[];
+  setFilter: SetFilterFunc;
+  activeFilters: ActiveFiltersMap;
+}> = ({ games, setFilter, activeFilters }): JSX.Element => {
   return (
     <>
       <div className={styles.filterContainer}>
         <span>{games.length} Spiele</span>
-        <Filters />
+        <Filters setFilter={setFilter} games={games} activeFilters={activeFilters} />
       </div>
       {games.map(
         ({

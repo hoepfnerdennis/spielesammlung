@@ -2,9 +2,9 @@ import React, { useCallback, memo } from 'react';
 import styles from './styles.module.css';
 
 type SelectProps = {
-  values: Array<number>;
-  value: number | undefined;
-  onChange: (value: number) => void;
+  values: Array<string>;
+  value: string;
+  onChange: (value: string | undefined) => void;
   label: string;
   valueSuffix?: string;
 };
@@ -18,7 +18,11 @@ const Select: React.SFC<SelectProps> = ({
 }): JSX.Element => {
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
-      onChange(parseInt(event.target.value, 10));
+      if (event.target.value.length > 0) {
+        onChange(event.target.value);
+      } else {
+        onChange(undefined);
+      }
     },
     [onChange]
   );
@@ -33,9 +37,9 @@ const Select: React.SFC<SelectProps> = ({
         className={styles.selectbox}
         value={value}>
         <option value="">alle</option>
-        {values.map(value => (
-          <option key={value} value={value}>
-            {value}
+        {values.map(v => (
+          <option key={v} value={v}>
+            {v}
             {valueSuffix && ` ${valueSuffix}`}
           </option>
         ))}

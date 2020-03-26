@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './styles.module.css';
 import Search from '../Search';
+import { SetFilterFunc } from '../Store/types';
 
-const Header: React.SFC = (): JSX.Element => {
+const Header: React.SFC<{ setFilter: SetFilterFunc }> = ({ setFilter }): JSX.Element => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -10,10 +11,10 @@ const Header: React.SFC = (): JSX.Element => {
         <p className={styles.description}>
           Wir listen hier all unsere Spiele auf - zum Teilen, Ausleihen oder gemeinsam Spielen
         </p>
-        <Search />
+        <Search setFilter={setFilter} />
       </div>
     </header>
   );
 };
 
-export default Header;
+export default memo(Header);

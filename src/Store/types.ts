@@ -14,6 +14,23 @@ export interface IGame extends IBaseGame {
   image: string;
 }
 
+export type SetFilterFunc = (key: FilterKey) => (value: FilterValue | undefined) => void;
+
+export enum FilterKey {
+  'playersFrom',
+  'playersTo',
+  'name',
+  'favorite',
+}
+
+export type FilterValue = string;
+
+export interface FiltersConfig {
+  [key: string]: string;
+}
+
+export type ActiveFiltersMap = Map<FilterKey, FilterValue>;
+
 enum LinkTypes {
   'Asset',
   'Space',
@@ -121,25 +138,4 @@ export interface IAPIResponse {
   includes?: {
     Asset: IAsset[];
   };
-}
-
-export interface IFilters {
-  playersFrom: number | undefined;
-  playersTo: number | undefined;
-  favorite: boolean | undefined;
-  search: string | undefined;
-}
-
-export interface IState {
-  games: Array<IGame>;
-  filters: IFilters;
-}
-
-export type Reducer = (state: IState, action: IAction) => IState;
-
-export type Dispatch = React.Dispatch<IAction>;
-
-export interface IAction {
-  type: string;
-  payload: any;
 }

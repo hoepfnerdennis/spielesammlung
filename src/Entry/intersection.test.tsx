@@ -33,13 +33,10 @@ describe('intersection', () => {
 
   it('should intersect and trigger once', () => {
     let callback: any;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     window.IntersectionObserver = jest.fn(function IntersectionObserver(observerCallback) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       this.observe = mockObserver.observe;
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       this.disconnect = mockObserver.disconnect;
       callback = observerCallback;
@@ -62,13 +59,10 @@ describe('intersection', () => {
 
   it('should intersect multiple times', () => {
     let callback: any;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     window.IntersectionObserver = jest.fn(function IntersectionObserver(observerCallback) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       this.observe = mockObserver.observe;
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       this.disconnect = mockObserver.disconnect;
       callback = observerCallback;
@@ -95,7 +89,6 @@ describe('intersection', () => {
   });
 
   it('should handle fallback if no intersection observer available', () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     window.IntersectionObserver = undefined;
 

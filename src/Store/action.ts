@@ -1,5 +1,13 @@
-import { IGame, IAPIResponse, IFilters, Dispatch } from './types';
-import { SET_GAMES, SET_SEARCH_TERM, SET_PALYER_FROM, SET_PLAYER_TO, SET_FAVORITE } from '.';
+import { useCallback, useState, useEffect } from 'react';
+import {
+  IGame,
+  IAPIResponse,
+  FiltersConfig,
+  FilterKey,
+  FilterValue,
+  SetFilterFunc,
+  ActiveFiltersMap,
+} from './types';
 import { mapResultsToGames } from '../utils';
 
 const SPACE_ID = '9sxha2f3gm24';
@@ -8,57 +16,79 @@ const API_TOKEN = '7LDIC95TsrYOfZwEQnbAuMHtij97kfk5r1dIRiGqT8M';
 // const BASE_URI = 'http://localhost:3001/response.json';
 const BASE_URI = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/master/entries?access_token=${API_TOKEN}`;
 
-// eslint-disable-next-line import/prefer-default-export
-export const fetchGamesAction = async (filters: IFilters, dispatch: Dispatch): Promise<void> => {
+const filtersConfig: FiltersConfig = {
+  playersFrom: '[lte]',
+  playersTo: '[gte]',
+  name: '[match]',
+  favorite: '',
+};
+
+const fetchGamesAction = async (filters: Map<FilterKey, FilterValue>): Promise<IGame[]> => {
   let url = `${BASE_URI}&content_type=game`;
-  if (filters.playersFrom) {
-    url += `&fields.playersFrom[lte]=${filters.playersFrom}`; // &fields.playersTo[gte]=${from}`;
-  }
-  if (filters.playersTo) {
-    url += `&fields.playersTo[gte]=${filters.playersTo}`; // &fields.playersFrom[lte]=${to}`;
-  }
-  if (filters.search) {
-    url += `&fields.name[match]=${filters.search}`;
-  }
-  if (filters.favorite) {
-    url += `&fields.favorite=${filters.favorite}`;
-  }
+  filters.forEach((value, key) => {
+    url += `&fields.${FilterKey[key]}${filtersConfig[FilterKey[key]]}=${value}`; // &fields.playersTo[gte]=${from}`;
+  });
+
   try {
     const response = await fetch(url);
     const data: IAPIResponse = await response.json();
     const gamesFromAPI: IGame[] = mapResultsToGames(data);
-    dispatch({
-      type: SET_GAMES,
-      payload: gamesFromAPI,
-    });
+    return gamesFromAPI;
   } catch {
-    dispatch({
-      type: SET_GAMES,
-      payload: [],
-    });
+    return [];
   }
 };
 
-export const setSearchTerm = (dispatch: Dispatch): ((payload: string) => void) => (
-  payload: string
-): void => {
-  dispatch({ type: SET_SEARCH_TERM, payload });
+const useData = (): {
+  games: IGame[];
+  setFilter: SetFilterFunc;
+  activeFilters: ActiveFiltersMap;
+} => {
+  const [games, setGames] = useState<IGame[]>([]);
+  const [activeFilters, setActiveFilters] = useState<ActiveFiltersMap>(new Map());
+
+  useEffect(() => {
+    const fetchGames = async (): Promise<void> => {
+      const newGames = await fetchGamesAction(activeFilters);
+      setGames(newGames);
+    };
+    fetchGames();
+  }, [activeFilters]);
+
+  const addFilter = useCallback((key: FilterKey, value: FilterValue): void => {
+    setActiveFilters(activeFiltersMap => {
+      if (activeFiltersMap.get(key) === value) {
+        return activeFiltersMap;
+      }
+      const newMap = new Map(activeFiltersMap);
+      newMap.set(key, value);
+      return newMap;
+    });
+  }, []);
+
+  const removeFilter = useCallback((key: FilterKey): void => {
+    setActiveFilters(activeFiltersMap => {
+      if (!activeFiltersMap.has(key)) {
+        return activeFiltersMap;
+      }
+      const newMap = new Map(activeFiltersMap);
+      newMap.delete(key);
+      return newMap;
+    });
+  }, []);
+
+  const setFilter = useCallback(
+    (key: FilterKey) => (value: FilterValue | undefined): void => {
+      if (value) {
+        addFilter(key, value);
+      } else {
+        removeFilter(key);
+      }
+    },
+    [addFilter, removeFilter]
+  );
+
+  return { games, setFilter, activeFilters };
 };
 
-export const setPlayersFrom = (dispatch: Dispatch): ((payload: number) => void) => (
-  payload: number
-): void => {
-  dispatch({ type: SET_PALYER_FROM, payload });
-};
-
-export const setPlayersTo = (dispatch: Dispatch): ((payload: number) => void) => (
-  payload: number
-): void => {
-  dispatch({ type: SET_PLAYER_TO, payload });
-};
-
-export const setFavorite = (dispatch: Dispatch): ((payload: boolean) => void) => (
-  payload: boolean
-): void => {
-  dispatch({ type: SET_FAVORITE, payload });
-};
+export default useData;

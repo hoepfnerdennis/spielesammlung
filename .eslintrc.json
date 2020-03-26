@@ -79,7 +79,7 @@
           }
         ],
         "import/prefer-default-export": "warn",
-        "@typescript-eslint/ban-ts-ignore": "warn",
+        "@typescript-eslint/ban-ts-ignore": "off",
         "@typescript-eslint/interface-name-prefix": "off"
       }
 }

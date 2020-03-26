@@ -25,7 +25,12 @@ const Layer: React.SFC<{ children: React.ReactNode; closeLayer: () => void }> = 
 
   return ReactDOM.createPortal(
     <div className={styles.layer}>
-      <button type="button" className={styles.background} onClick={closeLayer} />
+      <button
+        aria-label="layer schließen"
+        type="button"
+        className={styles.background}
+        onClick={closeLayer}
+      />
       <div className={styles.container}>{children}</div>
     </div>,
     container.current

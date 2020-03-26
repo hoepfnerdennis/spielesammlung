@@ -57,6 +57,7 @@ describe('Entry', () => {
       },
     ],
   ])('should render %s', (_, intersecting, game) => {
+    // @ts-ignore
     useIntersection.mockImplementation(() => intersecting);
     // eslint-disable-next-line react/jsx-props-no-spreading
     const { container } = render(<Entry {...game} />);

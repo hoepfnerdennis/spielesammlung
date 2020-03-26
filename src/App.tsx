@@ -1,22 +1,20 @@
 import React from 'react';
 import styles from './App.module.css';
-
 import Header from './Header';
 import List from './List';
-import { StoreProvider } from './Store';
 import Footer from './Footer';
+import useData from './Store/action';
 
-const App: React.SFC = () => {
+const App: React.FC = () => {
+  const { games, setFilter, activeFilters } = useData();
   return (
-    <StoreProvider>
-      <div className={styles.container}>
-        <Header />
-        <main>
-          <List />
-        </main>
-        <Footer />
-      </div>
-    </StoreProvider>
+    <div className={styles.container}>
+      <Header setFilter={setFilter} />
+      <main>
+        <List games={games} setFilter={setFilter} activeFilters={activeFilters} />
+      </main>
+      <Footer />
+    </div>
   );
 };
 
