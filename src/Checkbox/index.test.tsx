@@ -4,18 +4,15 @@ import Checkbox from './index';
 
 describe('Checkbox', () => {
   it.each([
-    ['checked', true],
-    ['unchecked', false],
-  ])('should render %s', (_, checked) => {
+    ['checked', true, undefined],
+    ['unchecked', false, 'true'],
+  ])('should render %s', (_, checked, result) => {
     const onChange = jest.fn();
-    const { container } = render(<Checkbox label="label" onChange={onChange} checked={checked} />);
+    const { container, getByText } = render(
+      <Checkbox label="label" onChange={onChange} checked={checked} />
+    );
     expect(container).toMatchSnapshot();
-  });
-
-  it('should handle click', () => {
-    const onChange = jest.fn();
-    const { getByText } = render(<Checkbox label="label" onChange={onChange} checked={false} />);
     fireEvent.click(getByText('label'));
-    expect(onChange).toHaveBeenLastCalledWith(true);
+    expect(onChange).toHaveBeenLastCalledWith(result);
   });
 });
