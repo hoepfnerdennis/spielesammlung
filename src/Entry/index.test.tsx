@@ -3,7 +3,10 @@ import { render } from '@testing-library/react';
 import Entry from './index';
 import useIntersection from './intersection';
 
-jest.mock('../Features/index.tsx', () => (): string => 'Features');
+jest.mock('../Features/index.tsx', () => ({
+  List: ({ children }) => children,
+  Item: ({ name }) => name,
+}));
 jest.mock('./intersection.ts');
 
 describe('Entry', () => {
@@ -36,6 +39,22 @@ describe('Entry', () => {
         age: '4',
         duration: 'duration',
         favorite: true,
+        simpleRules: false,
+        image: 'image',
+      },
+    ],
+    [
+      'with same players',
+      true,
+      {
+        id: 'id',
+        name: 'name',
+        description: 'description',
+        playersFrom: 2,
+        playersTo: 2,
+        age: '4',
+        duration: 'duration',
+        favorite: false,
         simpleRules: false,
         image: 'image',
       },

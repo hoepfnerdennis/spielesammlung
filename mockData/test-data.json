@@ -1,0 +1,371 @@
+{
+  "sys": {
+    "type": "Array"
+  },
+  "total": 86,
+  "skip": 0,
+  "limit": 100,
+  "items": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "9sxha2f3gm24"
+          }
+        },
+        "id": "5tPtUeXotbR8qiWTgRJmn4",
+        "type": "Entry",
+        "createdAt": "2020-03-22T15:31:55.176Z",
+        "updatedAt": "2020-03-22T15:31:55.176Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "game"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "name": "Pokerkoffer",
+        "description": "Im Koffer befinden sich zwei Kartensets mit je 52 Karten, Chips in rot (2x), weiß (2x), blau und schwarz, sowie einem Dealer, small blind und big blind.",
+        "playersFrom": 2,
+        "playersTo": 10,
+        "duration": "depends",
+        "age": "12",
+        "image": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "7mUfOSo47MiVzNUnHiAVg1"
+          }
+        },
+        "favorite": false,
+        "simpleRules": false
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "9sxha2f3gm24"
+          }
+        },
+        "id": "1UqzcWAO8OJwHvhKBhXKXW",
+        "type": "Entry",
+        "createdAt": "2020-03-22T15:22:43.818Z",
+        "updatedAt": "2020-03-22T15:22:43.818Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "game"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "name": "Deutschlandreise",
+        "description": "Zuerst Winnetou in Bad Segeberg besuchen und dann in Heidelberg das größte Weinfass der Welt besichtigen? Oder erst zum Dom nach Köln? Die Spieler von „Deutschlandreise“ begeben sich auf eine spannende und informative Reise quer durch Deutschland.",
+        "playersFrom": 2,
+        "playersTo": 2,
+        "duration": "30 - 45 Minuten",
+        "age": "8",
+        "image": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "5esCmTrGAPRhn0lW3SXyp2"
+          }
+        },
+        "favorite": false,
+        "simpleRules": false
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "9sxha2f3gm24"
+          }
+        },
+        "id": "73XWqmdaCC9N70waq68Q3X",
+        "type": "Entry",
+        "createdAt": "2020-03-22T15:19:46.361Z",
+        "updatedAt": "2020-03-22T15:19:46.361Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "game"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "name": "Hase und Igel",
+        "description": "Mit reichlich Karotten und noch mehr Siegeswillen geht´s an den Start. Doch der Möhrenvorrat reicht nicht aus, um damit direkt ins Ziel zu kommen. Also müssen die Spieler sich immer wieder mal geschickt zurückfallen lassen, um neue Kraft zu tanken.",
+        "playersFrom": 2,
+        "playersTo": 6,
+        "duration": "30 - 45 Minuten",
+        "age": "8",
+        "image": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "1IyuNRDBSQteQbfFVjuDgD"
+          }
+        },
+        "favorite": false,
+        "simpleRules": true
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "9sxha2f3gm24"
+          }
+        },
+        "id": "1gaoT4oQeWAZaeBKeiho0H",
+        "type": "Entry",
+        "createdAt": "2020-03-22T15:16:56.428Z",
+        "updatedAt": "2020-03-22T15:16:56.428Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "game"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "name": "Europareise",
+        "description": "Mit dem Flieger nach Paris? Auf dem Wasserweg nach Barcelona? Oder doch den Zug nach Mailand? Auf jeden Fall sind die Spieler bei „Europareise“ mit Flugzeug, Bahn, Auto oder Schiff kreuz und quer durch ganz Europa unterwegs! Ziel ist es, möglichst viele Reiseziele in sechs unterschiedlichen Regionen zu besuchen.",
+        "playersFrom": 2,
+        "playersTo": 6,
+        "duration": "30 - 45 Minuten",
+        "age": "10",
+        "image": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "2OtGZn5vFuqxhrcUZMgAmN"
+          }
+        },
+        "favorite": true,
+        "simpleRules": false
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "9sxha2f3gm24"
+          }
+        },
+        "id": "3j9fYpYXTcn7oKFweKUujq",
+        "type": "Entry",
+        "createdAt": "2020-03-22T15:13:14.963Z",
+        "updatedAt": "2020-03-22T15:13:14.963Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "game"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "name": "Bluff",
+        "description": "Fünf Würfel und ein Becher für jeden. Ein abschätzender Blick, eine schnelle Hochrechnung - wie viele Fünfer sind im Spiel? Die Wetten steigen, der Blutdruck auch. Bis einer die Nerven verliert und fordert: Hoch die Becher!",
+        "playersFrom": 2,
+        "playersTo": 6,
+        "duration": "30 Minuten",
+        "age": "12",
+        "image": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "YKBH5tTot6TmWKe2cld18"
+          }
+        },
+        "favorite": true,
+        "simpleRules": true
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "9sxha2f3gm24"
+          }
+        },
+        "id": "3j9fYpYXTcn7oKFweKUujq",
+        "type": "Entry",
+        "createdAt": "2020-03-22T15:13:14.963Z",
+        "updatedAt": "2020-03-22T15:13:14.963Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "game"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "name": "Bluff",
+        "description": "ohne fav und simple",
+        "playersFrom": 2,
+        "playersTo": 6,
+        "duration": "30 Minuten",
+        "age": "12"
+      }
+    }
+  ],
+  "includes": {
+    "Asset": [
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "9sxha2f3gm24"
+            }
+          },
+          "id": "7mUfOSo47MiVzNUnHiAVg1",
+          "type": "Asset",
+          "createdAt": "2020-03-22T15:31:09.526Z",
+          "updatedAt": "2020-03-22T16:20:53.417Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 2,
+          "locale": "en-US"
+        },
+        "fields": {
+          "title": "poker",
+          "file": {
+            "url": "//images.ctfassets.net/9sxha2f3gm24/7mUfOSo47MiVzNUnHiAVg1/a1e0cfe06cdd5c1fa3b304e740c31d83/IMG_0214.png",
+            "details": {
+              "size": 61976,
+              "image": {
+                "width": 152,
+                "height": 225
+              }
+            },
+            "fileName": "IMG_0214.png",
+            "contentType": "image/png"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "9sxha2f3gm24"
+            }
+          },
+          "id": "5esCmTrGAPRhn0lW3SXyp2",
+          "type": "Asset",
+          "createdAt": "2020-03-22T15:22:40.818Z",
+          "updatedAt": "2020-03-22T16:37:03.608Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 2,
+          "locale": "en-US"
+        },
+        "fields": {
+          "title": "Deutschlandreise",
+          "file": {
+            "url": "//images.ctfassets.net/9sxha2f3gm24/5esCmTrGAPRhn0lW3SXyp2/8de3067ec9c3dc67c87c63e4abee9798/IMG_0213.jpg",
+            "details": {
+              "size": 67559,
+              "image": {
+                "width": 555,
+                "height": 405
+              }
+            },
+            "fileName": "IMG_0213.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    ]
+  }
+}

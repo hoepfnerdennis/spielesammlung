@@ -1,67 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Features should render default 1`] = `
+exports[`Features should render item default 1`] = `
 <div>
-  <div
-    class="container"
+  <p
+    class="players"
   >
-    <div
-      class="box"
+    <span
+      aria-label="name"
+      role="img"
     >
-      <p
-        class="players"
-      >
-        <span
-          aria-label="Anzahl Spieler"
-          role="img"
-        >
-          👤
-        </span>
-        <b
-          class="highlight"
-        >
-          2 - 4
-           Spieler
-        </b>
-      </p>
-      <p
-        class="players"
-      >
-        <span
-          aria-label="Altersempfehlung"
-          role="img"
-        >
-          📅
-        </span>
-        <b
-          class="highlight"
-        >
-          ab 
-          4
-           Jahren
-        </b>
-      </p>
-      <p
-        class="players"
-      >
-        <span
-          aria-label="Spieldauer"
-          role="img"
-        >
-          ⏳
-        </span>
-        <b
-          class="highlight"
-        >
-          duration
-        </b>
-      </p>
-    </div>
-  </div>
+      icon
+    </span>
+    <b
+      class="highlight"
+    >
+      desc
+    </b>
+  </p>
 </div>
 `;
 
-exports[`Features should render with simple rules 1`] = `
+exports[`Features should render item with condition 1`] = `<div />`;
+
+exports[`Features should render list 1`] = `
 <div>
   <div
     class="container"
@@ -73,65 +34,15 @@ exports[`Features should render with simple rules 1`] = `
         class="players"
       >
         <span
-          aria-label="Anzahl Spieler"
+          aria-label="name1"
           role="img"
         >
-          👤
+          icon1
         </span>
         <b
           class="highlight"
         >
-          2
-           Spieler
-        </b>
-      </p>
-      <p
-        class="players"
-      >
-        <span
-          aria-label="Altersempfehlung"
-          role="img"
-        >
-          📅
-        </span>
-        <b
-          class="highlight"
-        >
-          ab 
-          4
-           Jahren
-        </b>
-      </p>
-      <p
-        class="players"
-      >
-        <span
-          aria-label="Spieldauer"
-          role="img"
-        >
-          ⏳
-        </span>
-        <b
-          class="highlight"
-        >
-          duration
-        </b>
-      </p>
-    </div>
-    <div>
-      <p
-        class="players"
-      >
-        <span
-          aria-label="Einfache Regeln"
-          role="img"
-        >
-          🏋️‍♀️
-        </span>
-        <b
-          class="highlight"
-        >
-          einfach
+          desc1
         </b>
       </p>
     </div>

@@ -2,7 +2,7 @@ import React, { memo, createRef, useEffect } from 'react';
 import styles from './styles.module.css';
 import { IGame } from '../Store/types';
 import useIntersection from './intersection';
-import Features from '../Features';
+import Feature from '../Features';
 
 const Entry: React.SFC<IGame> = ({
   name,
@@ -26,6 +26,8 @@ const Entry: React.SFC<IGame> = ({
     }
   }, [intersectingWithMargin, image]);
 
+  const player = playersFrom === playersTo ? playersFrom : `${playersFrom} - ${playersTo}`;
+
   return (
     <div className={styles.border} ref={entryRef}>
       {intersecting && (
@@ -36,13 +38,17 @@ const Entry: React.SFC<IGame> = ({
           <div className={styles.info}>
             <h2 className={styles.name}>{name}</h2>
             <p className={styles.description}>{description}</p>
-            <Features
-              playersFrom={playersFrom}
-              playersTo={playersTo}
-              age={age}
-              duration={duration}
-              simpleRules={simpleRules}
-            />
+            <Feature.List>
+              <Feature.Item name="Anzahl Spieler" icon="👤" desc={`${player} Spieler`} />
+              <Feature.Item name="Altersempfehlung" icon="📅" desc={`ab ${age} Jahren`} />
+              <Feature.Item name="Spieldauer" icon="⏳" desc={duration} />
+              <Feature.Item
+                condition={simpleRules}
+                name="Einfache Regeln"
+                icon="🏋️‍♀️"
+                desc="einfach"
+              />
+            </Feature.List>
           </div>
         </div>
       )}

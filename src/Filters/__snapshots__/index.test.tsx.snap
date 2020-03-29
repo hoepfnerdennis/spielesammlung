@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filters should open and close layer 1`] = `
+<div>
+  <button
+    class="button"
+    type="button"
+  >
+    Filter anzeigen
+  </button>
+  <button
+    data-testid="layer"
+    type="button"
+  >
+    <h2
+      class="headline"
+    >
+      Filtere die Spiele
+    </h2>
+    <div
+      class="element"
+    >
+      Select
+    </div>
+    <div
+      class="element"
+    >
+      Select
+    </div>
+    <div
+      class="element"
+    >
+      Checkbox
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Filters should open and close layer 2`] = `
+<div>
+  <button
+    class="button"
+    type="button"
+  >
+    Filter anzeigen
+  </button>
+</div>
+`;
+
+exports[`Filters should render favorite selected 1`] = `
+<div>
+  <button
+    class="button"
+    type="button"
+  >
+    Filter anzeigen
+  </button>
+  <button
+    data-testid="layer"
+    type="button"
+  >
+    <h2
+      class="headline"
+    >
+      Filtere die Spiele
+    </h2>
+    <div
+      class="element"
+    >
+      Select
+    </div>
+    <div
+      class="element"
+    >
+      Select
+    </div>
+    <div
+      class="element"
+    >
+      Checkbox
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Filters should render no active filter 1`] = `
+<div>
+  <button
+    class="button"
+    type="button"
+  >
+    Filter anzeigen
+  </button>
+  <button
+    data-testid="layer"
+    type="button"
+  >
+    <h2
+      class="headline"
+    >
+      Filtere die Spiele
+    </h2>
+    <div
+      class="element"
+    >
+      Select
+    </div>
+    <div
+      class="element"
+    >
+      Select
+    </div>
+    <div
+      class="element"
+    >
+      Checkbox
+    </div>
+  </button>
+</div>
+`;

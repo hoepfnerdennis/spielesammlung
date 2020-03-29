@@ -1,32 +1,40 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Features from './index';
+import Feature from './index';
 
 describe('Features', () => {
   it.each([
     [
       'default',
       {
-        playersFrom: 2,
-        playersTo: 4,
-        age: '4',
-        duration: 'duration',
-        simpleRules: false,
+        icon: 'icon',
+        name: 'name',
+        desc: 'desc',
       },
     ],
     [
-      'with simple rules',
+      'with condition',
       {
-        playersFrom: 2,
-        playersTo: 2,
-        age: '4',
-        duration: 'duration',
-        simpleRules: true,
+        icon: 'icon',
+        name: 'name',
+        desc: 'desc',
+        condition: false,
       },
     ],
-  ])('should render %s', (_, props) => {
+  ])('should render item %s', (_, props) => {
     // eslint-disable-next-line react/jsx-props-no-spreading
-    const { container } = render(<Features {...props} />);
+    const { container } = render(<Feature.Item {...props} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render list', () => {
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    const { container } = render(
+      <Feature.List>
+        <Feature.Item name="name1" icon="icon1" desc="desc1" />
+        <Feature.Item name="name2" icon="icon2" desc="desc2" condition={false} />
+      </Feature.List>
+    );
     expect(container).toMatchSnapshot();
   });
 });

@@ -37,7 +37,7 @@ const Select: React.SFC<SelectProps> = ({
         className={styles.selectbox}
         value={value}>
         <option value="">alle</option>
-        {values.map(v => (
+        {values.map((v) => (
           <option key={v} value={v}>
             {v}
             {valueSuffix && ` ${valueSuffix}`}

@@ -56,7 +56,7 @@ const useData = (): {
   }, [activeFilters]);
 
   const addFilter = useCallback((key: FilterKey, value: FilterValue): void => {
-    setActiveFilters(activeFiltersMap => {
+    setActiveFilters((activeFiltersMap) => {
       if (activeFiltersMap.get(key) === value) {
         return activeFiltersMap;
       }
@@ -67,7 +67,7 @@ const useData = (): {
   }, []);
 
   const removeFilter = useCallback((key: FilterKey): void => {
-    setActiveFilters(activeFiltersMap => {
+    setActiveFilters((activeFiltersMap) => {
       if (!activeFiltersMap.has(key)) {
         return activeFiltersMap;
       }

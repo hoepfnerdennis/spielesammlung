@@ -38,7 +38,10 @@ exports[`Entry should render with favorite 1`] = `
         >
           description
         </p>
-        Features
+        Anzahl Spieler
+        Altersempfehlung
+        Spieldauer
+        Einfache Regeln
       </div>
     </div>
   </div>
@@ -75,7 +78,50 @@ exports[`Entry should render with intersection 1`] = `
         >
           description
         </p>
-        Features
+        Anzahl Spieler
+        Altersempfehlung
+        Spieldauer
+        Einfache Regeln
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Entry should render with same players 1`] = `
+<div>
+  <div
+    class="border"
+  >
+    <div
+      class="container "
+    >
+      <div
+        class="imageContainer"
+      >
+        <img
+          alt="Bild von name"
+          class="image"
+          src="image"
+        />
+      </div>
+      <div
+        class="info"
+      >
+        <h2
+          class="name"
+        >
+          name
+        </h2>
+        <p
+          class="description"
+        >
+          description
+        </p>
+        Anzahl Spieler
+        Altersempfehlung
+        Spieldauer
+        Einfache Regeln
       </div>
     </div>
   </div>
