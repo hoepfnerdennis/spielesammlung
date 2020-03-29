@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layer should render and match snapshot 1`] = `
+<div
+  id="layer"
+>
+  <div
+    data-testid="portal"
+  >
+    <div
+      class="layer"
+    >
+      <button
+        aria-label="layer schließen"
+        class="background"
+        type="button"
+      />
+      <div
+        class="container"
+      >
+        children
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -78,7 +78,7 @@ const useData = (): {
   }, []);
 
   const setFilter = useCallback(
-    (key: FilterKey) => (value: FilterValue | undefined): void => {
+    (key: FilterKey) => (value?: FilterValue | undefined): void => {
       if (value) {
         addFilter(key, value);
       } else {

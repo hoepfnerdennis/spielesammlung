@@ -16,20 +16,20 @@ const Filters: React.FC<{
   const playersFromValues: string[] = useMemo(
     () =>
       games
-        .map(game => game.playersFrom)
+        .map((game) => game.playersFrom)
         .filter((players, index, array) => array.indexOf(players) === index)
         .sort(order)
-        .map(f => f.toString()),
+        .map((f) => f.toString()),
     [games]
   );
 
   const playersToValues: string[] = useMemo(
     () =>
       games
-        .map(game => game.playersTo)
+        .map((game) => game.playersTo)
         .filter((players, index, array) => array.indexOf(players) === index)
         .sort(order)
-        .map(f => f.toString()),
+        .map((f) => f.toString()),
     [games]
   );
 

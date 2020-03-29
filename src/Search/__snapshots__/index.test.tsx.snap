@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search should render and match snapshot 1`] = `
+<div>
+  <form
+    class="container"
+  >
+    <input
+      class="input"
+      placeholder="Spiel suchen..."
+      type="text"
+      value=""
+    />
+    <input
+      class="submit"
+      data-testid="submit"
+      type="submit"
+      value="Suchen"
+    />
+  </form>
+</div>
+`;

@@ -23,7 +23,7 @@ const Search: React.FC<{ setFilter: SetFilterFunc }> = ({ setFilter }): JSX.Elem
         className={styles.input}
         placeholder="Spiel suchen..."
       />
-      <input type="submit" value="Suchen" className={styles.submit} />
+      <input data-testid="submit" type="submit" value="Suchen" className={styles.submit} />
     </form>
   );
 };

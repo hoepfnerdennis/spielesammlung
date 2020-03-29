@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List should render and match snapshot 1`] = `
+<div>
+  <div
+    class="filterContainer"
+  >
+    <span>
+      1
+       Spiele
+    </span>
+    <button
+      class="button"
+      type="button"
+    >
+      Filter anzeigen
+    </button>
+  </div>
+</div>
+`;

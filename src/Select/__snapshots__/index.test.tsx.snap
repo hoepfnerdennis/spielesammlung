@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select should not rerender if values not change 1`] = `
+<div>
+  <label
+    class="container"
+    for="label"
+  >
+    label
+    <select
+      class="selectbox"
+      id="label"
+      name="label"
+    >
+      <option
+        value=""
+      >
+        alle
+      </option>
+      <option
+        value="a"
+      >
+        a valueSuffix
+      </option>
+      <option
+        value="b"
+      >
+        b valueSuffix
+      </option>
+      <option
+        value="c"
+      >
+        c valueSuffix
+      </option>
+    </select>
+  </label>
+</div>
+`;
+
+exports[`Select should not rerender if values not change 2`] = `
+<div>
+  <label
+    class="container"
+    for="label"
+  >
+    label
+    <select
+      class="selectbox"
+      id="label"
+      name="label"
+    >
+      <option
+        value=""
+      >
+        alle
+      </option>
+      <option
+        value="a"
+      >
+        a valueSuffix
+      </option>
+      <option
+        value="b"
+      >
+        b valueSuffix
+      </option>
+      <option
+        value="c"
+      >
+        c valueSuffix
+      </option>
+    </select>
+  </label>
+</div>
+`;
+
+exports[`Select should render and match snapshot 1`] = `
+<div>
+  <label
+    class="container"
+    for="label"
+  >
+    label
+    <select
+      class="selectbox"
+      id="label"
+      name="label"
+    >
+      <option
+        value=""
+      >
+        alle
+      </option>
+      <option
+        value="a"
+      >
+        a valueSuffix
+      </option>
+      <option
+        value="b"
+      >
+        b valueSuffix
+      </option>
+      <option
+        value="c"
+      >
+        c valueSuffix
+      </option>
+    </select>
+  </label>
+</div>
+`;

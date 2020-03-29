@@ -6,20 +6,15 @@ const Layer: React.SFC<{ children: React.ReactNode; closeLayer: () => void }> = 
   children,
   closeLayer,
 }): JSX.Element => {
-  const root = useRef<HTMLElement | null>(document.getElementById('layer'));
+  const root = useRef<HTMLElement>(document.body);
   const container = useRef<HTMLDivElement>(document.createElement('div'));
 
   useEffect(() => {
-    if (root.current) {
-      const currentRoot = root.current;
-      const currentContainter = container.current;
-      currentRoot.appendChild(currentContainter);
-      return (): void => {
-        currentRoot.removeChild(currentContainter);
-      };
-    }
+    const currentRoot = root.current;
+    const currentContainter = container.current;
+    currentRoot.appendChild(currentContainter);
     return (): void => {
-      // do nothing
+      currentRoot.removeChild(currentContainter);
     };
   }, []);
 

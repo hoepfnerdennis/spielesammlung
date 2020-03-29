@@ -14,7 +14,7 @@ export interface IGame extends IBaseGame {
   image: string;
 }
 
-export type SetFilterFunc = (key: FilterKey) => (value: FilterValue | undefined) => void;
+export type SetFilterFunc = (key: FilterKey) => (value?: FilterValue | undefined) => void;
 
 export enum FilterKey {
   'playersFrom',
