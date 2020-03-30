@@ -21,6 +21,8 @@ const filtersConfig: FiltersConfig = {
   playersTo: '[gte]',
   name: '[match]',
   favorite: '',
+  simpleRules: '',
+  drinkingGame: '',
 };
 
 const fetchGamesAction = async (filters: Map<FilterKey, FilterValue>): Promise<IGame[]> => {

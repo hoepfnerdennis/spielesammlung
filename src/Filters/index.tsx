@@ -49,7 +49,7 @@ const Filters: React.FC<{
               values={playersFromValues}
               value={activeFilters.get(FilterKey.playersFrom) || ''}
               onChange={setFilter(FilterKey.playersFrom)}
-              label="Nur Spiele ab"
+              label="👤 Nur Spiele ab"
               valueSuffix="Spieler"
             />
           </div>
@@ -58,19 +58,29 @@ const Filters: React.FC<{
               values={playersToValues}
               value={activeFilters.get(FilterKey.playersTo) || ''}
               onChange={setFilter(FilterKey.playersTo)}
-              label="Nur Spiele bis"
+              label="👤 Nur Spiele bis"
               valueSuffix="Spieler"
             />
           </div>
           <div className={styles.element}>
             <Checkbox
               checked={activeFilters.has(FilterKey.favorite)}
-              label={
-                activeFilters.get(FilterKey.favorite)
-                  ? 'Alle Spiele anzeigen'
-                  : 'Nur Empfehlungen anzeigen'
-              }
+              label="👍 Nur Empfehlungen anzeigen"
               onChange={setFilter(FilterKey.favorite)}
+            />
+          </div>
+          <div className={styles.element}>
+            <Checkbox
+              checked={activeFilters.has(FilterKey.simpleRules)}
+              label="🏋️‍♀️ einfache Spielregeln"
+              onChange={setFilter(FilterKey.simpleRules)}
+            />
+          </div>
+          <div className={styles.element}>
+            <Checkbox
+              checked={activeFilters.has(FilterKey.drinkingGame)}
+              label="🥂 Trinkspiel geeignet"
+              onChange={setFilter(FilterKey.drinkingGame)}
             />
           </div>
         </Layer>

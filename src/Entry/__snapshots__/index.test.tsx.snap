@@ -38,10 +38,25 @@ exports[`Entry should render with favorite 1`] = `
         >
           description
         </p>
-        Anzahl Spieler
-        Altersempfehlung
-        Spieldauer
-        Einfache Regeln
+        <div>
+          Anzahl Spieler
+        </div>
+        <div>
+          Altersempfehlung
+        </div>
+        <div>
+          Spieldauer
+        </div>
+        <div
+          data-condition="false"
+        >
+          Einfache Regeln
+        </div>
+        <div
+          data-condition="false"
+        >
+          Trinkspiel
+        </div>
       </div>
     </div>
   </div>
@@ -78,10 +93,25 @@ exports[`Entry should render with intersection 1`] = `
         >
           description
         </p>
-        Anzahl Spieler
-        Altersempfehlung
-        Spieldauer
-        Einfache Regeln
+        <div>
+          Anzahl Spieler
+        </div>
+        <div>
+          Altersempfehlung
+        </div>
+        <div>
+          Spieldauer
+        </div>
+        <div
+          data-condition="false"
+        >
+          Einfache Regeln
+        </div>
+        <div
+          data-condition="false"
+        >
+          Trinkspiel
+        </div>
       </div>
     </div>
   </div>
@@ -118,10 +148,25 @@ exports[`Entry should render with same players 1`] = `
         >
           description
         </p>
-        Anzahl Spieler
-        Altersempfehlung
-        Spieldauer
-        Einfache Regeln
+        <div>
+          Anzahl Spieler
+        </div>
+        <div>
+          Altersempfehlung
+        </div>
+        <div>
+          Spieldauer
+        </div>
+        <div
+          data-condition="false"
+        >
+          Einfache Regeln
+        </div>
+        <div
+          data-condition="false"
+        >
+          Trinkspiel
+        </div>
       </div>
     </div>
   </div>

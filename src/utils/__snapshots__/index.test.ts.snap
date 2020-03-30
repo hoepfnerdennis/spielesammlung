@@ -5,6 +5,7 @@ Array [
   Object {
     "age": "12",
     "description": "Fünf Würfel und ein Becher für jeden. Ein abschätzender Blick, eine schnelle Hochrechnung - wie viele Fünfer sind im Spiel? Die Wetten steigen, der Blutdruck auch. Bis einer die Nerven verliert und fordert: Hoch die Becher!",
+    "drinkingGame": false,
     "duration": "30 Minuten",
     "favorite": true,
     "id": "3j9fYpYXTcn7oKFweKUujq",
@@ -17,6 +18,7 @@ Array [
   Object {
     "age": "12",
     "description": "ohne fav und simple",
+    "drinkingGame": false,
     "duration": "30 Minuten",
     "favorite": false,
     "id": "3j9fYpYXTcn7oKFweKUujq",
@@ -29,6 +31,7 @@ Array [
   Object {
     "age": "8",
     "description": "Zuerst Winnetou in Bad Segeberg besuchen und dann in Heidelberg das größte Weinfass der Welt besichtigen? Oder erst zum Dom nach Köln? Die Spieler von „Deutschlandreise“ begeben sich auf eine spannende und informative Reise quer durch Deutschland.",
+    "drinkingGame": false,
     "duration": "30 - 45 Minuten",
     "favorite": false,
     "id": "1UqzcWAO8OJwHvhKBhXKXW",
@@ -41,6 +44,7 @@ Array [
   Object {
     "age": "10",
     "description": "Mit dem Flieger nach Paris? Auf dem Wasserweg nach Barcelona? Oder doch den Zug nach Mailand? Auf jeden Fall sind die Spieler bei „Europareise“ mit Flugzeug, Bahn, Auto oder Schiff kreuz und quer durch ganz Europa unterwegs! Ziel ist es, möglichst viele Reiseziele in sechs unterschiedlichen Regionen zu besuchen.",
+    "drinkingGame": false,
     "duration": "30 - 45 Minuten",
     "favorite": true,
     "id": "1gaoT4oQeWAZaeBKeiho0H",
@@ -53,6 +57,7 @@ Array [
   Object {
     "age": "8",
     "description": "Mit reichlich Karotten und noch mehr Siegeswillen geht´s an den Start. Doch der Möhrenvorrat reicht nicht aus, um damit direkt ins Ziel zu kommen. Also müssen die Spieler sich immer wieder mal geschickt zurückfallen lassen, um neue Kraft zu tanken.",
+    "drinkingGame": false,
     "duration": "30 - 45 Minuten",
     "favorite": false,
     "id": "73XWqmdaCC9N70waq68Q3X",
@@ -65,6 +70,7 @@ Array [
   Object {
     "age": "12",
     "description": "Im Koffer befinden sich zwei Kartensets mit je 52 Karten, Chips in rot (2x), weiß (2x), blau und schwarz, sowie einem Dealer, small blind und big blind.",
+    "drinkingGame": false,
     "duration": "depends",
     "favorite": false,
     "id": "5tPtUeXotbR8qiWTgRJmn4",

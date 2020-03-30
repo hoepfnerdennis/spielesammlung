@@ -30,6 +30,7 @@ export const mapResultsToGames = (results: IAPIResponse): IGame[] => {
         favorite = false,
         simpleRules = false,
         image: imageRef,
+        drinkingGame = false,
       } = item.fields;
       const { id } = item.sys;
       const gameItem: IGame = {
@@ -43,6 +44,7 @@ export const mapResultsToGames = (results: IAPIResponse): IGame[] => {
         favorite,
         simpleRules,
         image: '',
+        drinkingGame,
       };
       if (imageRef && results.includes?.Asset) {
         const image: string = findImageForGame(results.includes.Asset, imageRef.sys.id);

@@ -14,6 +14,7 @@ const Entry: React.SFC<IGame> = ({
   favorite,
   simpleRules,
   image,
+  drinkingGame,
 }): JSX.Element => {
   const entryRef = createRef<HTMLDivElement>();
   const intersecting = useIntersection(entryRef, true);
@@ -47,6 +48,12 @@ const Entry: React.SFC<IGame> = ({
                 name="Einfache Regeln"
                 icon="🏋️‍♀️"
                 desc="einfach"
+              />
+              <Feature.Item
+                condition={drinkingGame}
+                name="Trinkspiel"
+                icon="🥂"
+                desc="Trinkspiel"
               />
             </Feature.List>
           </div>

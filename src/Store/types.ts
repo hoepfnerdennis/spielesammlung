@@ -8,6 +8,7 @@ interface IBaseGame {
   duration: string;
   favorite: boolean;
   simpleRules: boolean;
+  drinkingGame: boolean;
 }
 
 export interface IGame extends IBaseGame {
@@ -21,6 +22,8 @@ export enum FilterKey {
   'playersTo',
   'name',
   'favorite',
+  'drinkingGame',
+  'simpleRules',
 }
 
 export type FilterValue = string;

@@ -28,6 +28,7 @@ const List: React.SFC<{
           favorite,
           simpleRules,
           image,
+          drinkingGame,
         }: IGame) => (
           <Suspense fallback={null} key={id}>
             <Entry
@@ -41,6 +42,7 @@ const List: React.SFC<{
               favorite={favorite}
               simpleRules={simpleRules}
               image={image}
+              drinkingGame={drinkingGame}
             />
           </Suspense>
         )

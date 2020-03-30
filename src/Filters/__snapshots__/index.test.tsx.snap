@@ -32,6 +32,16 @@ exports[`Filters should open and close layer 1`] = `
     >
       Checkbox
     </div>
+    <div
+      class="element"
+    >
+      Checkbox
+    </div>
+    <div
+      class="element"
+    >
+      Checkbox
+    </div>
   </button>
 </div>
 `;
@@ -79,6 +89,16 @@ exports[`Filters should render favorite selected 1`] = `
     >
       Checkbox
     </div>
+    <div
+      class="element"
+    >
+      Checkbox
+    </div>
+    <div
+      class="element"
+    >
+      Checkbox
+    </div>
   </button>
 </div>
 `;
@@ -109,6 +129,16 @@ exports[`Filters should render no active filter 1`] = `
       class="element"
     >
       Select
+    </div>
+    <div
+      class="element"
+    >
+      Checkbox
+    </div>
+    <div
+      class="element"
+    >
+      Checkbox
     </div>
     <div
       class="element"
