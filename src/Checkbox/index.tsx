@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.module.scss';
+import Button from '../ Button';
 
 const Checkbox: React.SFC<{
   label: string;
@@ -11,12 +11,9 @@ const Checkbox: React.SFC<{
   };
 
   return (
-    <button
-      type="button"
-      className={checked ? styles.checked : styles.unchecked}
-      onClick={handleClick}>
+    <Button secondary={!checked} onClick={handleClick}>
       {label}
-    </button>
+    </Button>
   );
 };
 

@@ -1,20 +1,29 @@
-import React, { Suspense } from 'react';
-import { IGame, ActiveFiltersMap, SetFilterFunc } from '../Store/types';
+import React, { Suspense, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { IGame } from '../Store/types';
 import Filters from '../Filters';
 import styles from './styles.module.css';
+import Button from '../ Button';
+import DataContext from '../Store/DataContext';
+import BookmarkContext from '../Bookmark/BookmarkContext';
 
 const Entry = React.lazy(() => import(/* webpackChunkName: "entry" */ '../Entry'));
 
-const List: React.SFC<{
-  games: IGame[];
-  setFilter: SetFilterFunc;
-  activeFilters: ActiveFiltersMap;
-}> = ({ games, setFilter, activeFilters }): JSX.Element => {
+const List: React.SFC = (): JSX.Element => {
+  const history = useHistory();
+  const { games } = useContext(DataContext);
+  const { bookmarks } = useContext(BookmarkContext);
+
+  const navigateToBookmarks = (): void => {
+    history.push('/bookmarks');
+  };
+
   return (
     <>
       <div className={styles.filterContainer}>
         <span>{games.length} Spiele</span>
-        <Filters setFilter={setFilter} games={games} activeFilters={activeFilters} />
+        <Button onClick={navigateToBookmarks}>Merkliste ({bookmarks.length})</Button>
+        <Filters />
       </div>
       {games.map(
         ({

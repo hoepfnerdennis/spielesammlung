@@ -62,11 +62,20 @@
     border: 3px solid darkcyan;
 }
 
+.bookmark {
+    position: absolute;
+    bottom: .6rem;
+    right: .6rem;
+}
+
 @media (min-width: 600px) {
     .container {
         flex-direction: row;
     }
     .imageContainer {
         align-self: flex-start;
+    }
+    .bookmark {
+        margin-top: auto;
     }
 }

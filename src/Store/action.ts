@@ -25,12 +25,7 @@ const filtersConfig: FiltersConfig = {
   drinkingGame: '',
 };
 
-const fetchGamesAction = async (filters: Map<FilterKey, FilterValue>): Promise<IGame[]> => {
-  let url = `${BASE_URI}&content_type=game`;
-  filters.forEach((value, key) => {
-    url += `&fields.${FilterKey[key]}${filtersConfig[FilterKey[key]]}=${value}`; // &fields.playersTo[gte]=${from}`;
-  });
-
+const fetchGames = async (url: string) => {
   try {
     const response = await fetch(url);
     const data: IAPIResponse = await response.json();
@@ -39,6 +34,14 @@ const fetchGamesAction = async (filters: Map<FilterKey, FilterValue>): Promise<I
   } catch {
     return [];
   }
+};
+
+const fetchGamesAction = async (filters: Map<FilterKey, FilterValue>): Promise<IGame[]> => {
+  let url = `${BASE_URI}&content_type=game`;
+  filters.forEach((value, key) => {
+    url += `&fields.${FilterKey[key]}${filtersConfig[FilterKey[key]]}=${value}`; // &fields.playersTo[gte]=${from}`;
+  });
+  return fetchGames(url);
 };
 
 const useData = (): {
@@ -50,11 +53,11 @@ const useData = (): {
   const [activeFilters, setActiveFilters] = useState<ActiveFiltersMap>(new Map());
 
   useEffect(() => {
-    const fetchGames = async (): Promise<void> => {
+    const getGames = async (): Promise<void> => {
       const newGames = await fetchGamesAction(activeFilters);
       setGames(newGames);
     };
-    fetchGames();
+    getGames();
   }, [activeFilters]);
 
   const addFilter = useCallback((key: FilterKey, value: FilterValue): void => {

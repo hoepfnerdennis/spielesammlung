@@ -6,13 +6,3 @@
 .element {
     margin-top: 1rem;
 }
-
-.button {
-    margin-left: .3rem;
-    background-color: darkcyan;
-    height: 2rem;
-    font-size: 1rem;
-    color: white;
-    border-radius: 5px;
-    padding: 0 1rem;
-}

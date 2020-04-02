@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from './styles.module.css';
-import { SetFilterFunc, FilterKey } from '../Store/types';
+import { FilterKey } from '../Store/types';
+import Button from '../ Button';
+import DataContext from '../Store/DataContext';
 
-const Search: React.FC<{ setFilter: SetFilterFunc }> = ({ setFilter }): JSX.Element => {
+const Search: React.FC = (): JSX.Element => {
   const [searchTerm, setSearchTermInternal] = useState<string>('');
+  const { setFilter } = useContext(DataContext);
+
+  const doSearch = (): void => {
+    setFilter(FilterKey.name)(searchTerm);
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    setFilter(FilterKey.name)(searchTerm);
+    doSearch();
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -23,7 +30,9 @@ const Search: React.FC<{ setFilter: SetFilterFunc }> = ({ setFilter }): JSX.Elem
         className={styles.input}
         placeholder="Spiel suchen..."
       />
-      <input data-testid="submit" type="submit" value="Suchen" className={styles.submit} />
+      <Button data-testid="submit" onClick={doSearch} secondary>
+        Suchen
+      </Button>
     </form>
   );
 };

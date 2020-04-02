@@ -3,8 +3,10 @@ import styles from './styles.module.css';
 import { IGame } from '../Store/types';
 import useIntersection from './intersection';
 import Feature from '../Features';
+import Marker from '../Bookmark/Marker';
 
 const Entry: React.SFC<IGame> = ({
+  id,
   name,
   description,
   playersFrom,
@@ -57,10 +59,13 @@ const Entry: React.SFC<IGame> = ({
               />
             </Feature.List>
           </div>
+          <div className={styles.bookmark}>
+            <Marker id={id} />
+          </div>
         </div>
       )}
     </div>
   );
 };
 
-export default memo(Entry);
+export default memo(Entry, (pp, np) => pp.id === np.id);

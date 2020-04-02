@@ -25,3 +25,14 @@
 .description {
     margin: 0 0 1rem 0;
 }
+
+.button {
+    color: inherit;
+    appearance: none;
+    font: inherit;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

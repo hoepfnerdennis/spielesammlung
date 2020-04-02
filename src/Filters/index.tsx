@@ -1,17 +1,16 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useContext } from 'react';
 import styles from './styles.module.css';
 import Select from '../Select';
 import Checkbox from '../Checkbox';
 import { order } from '../utils';
 import Layer from '../Layer';
-import { IGame, ActiveFiltersMap, FilterKey, SetFilterFunc } from '../Store/types';
+import { FilterKey } from '../Store/types';
+import Button from '../ Button';
+import DataContext from '../Store/DataContext';
 
-const Filters: React.FC<{
-  games: IGame[];
-  setFilter: SetFilterFunc;
-  activeFilters: ActiveFiltersMap;
-}> = ({ games, setFilter, activeFilters }): JSX.Element => {
+const Filters: React.FC = (): JSX.Element => {
   const [displayFilterLayer, setDisplayFilterLayer] = useState<boolean>(false);
+  const { games, setFilter, activeFilters } = useContext(DataContext);
 
   const playersFromValues: string[] = useMemo(
     () =>
@@ -35,12 +34,7 @@ const Filters: React.FC<{
 
   return (
     <>
-      <button
-        type="button"
-        className={styles.button}
-        onClick={(): void => setDisplayFilterLayer(true)}>
-        Filter anzeigen
-      </button>
+      <Button onClick={(): void => setDisplayFilterLayer(true)}>Filter anzeigen</Button>
       {displayFilterLayer && (
         <Layer closeLayer={(): void => setDisplayFilterLayer(false)}>
           <h2 className={styles.headline}>Filtere die Spiele</h2>
