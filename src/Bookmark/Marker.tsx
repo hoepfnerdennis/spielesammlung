@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useFela } from 'react-fela';
 import { IStyle } from 'fela';
-import BookmarkContext from './BookmarkContext';
+import { useBookmarks, useMark } from '../Store/BookmarkStore';
 
 const invisibleButton: IStyle = {
   fontSize: '1.6rem',
@@ -11,7 +11,8 @@ const invisibleButton: IStyle = {
 };
 
 const Marker: React.FC<{ id: string }> = ({ id }) => {
-  const { bookmarks, mark } = useContext(BookmarkContext);
+  const bookmarks = useBookmarks();
+  const mark = useMark();
   const { css } = useFela();
   return (
     <button type="button" onClick={(): void => mark(id)} className={css(invisibleButton)}>

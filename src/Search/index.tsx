@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 import { FilterKey } from '../Store/types';
 import Button from '../ Button';
-import DataContext from '../Store/DataContext';
+import { useSetFilter } from '../Store/action';
 
 const Search: React.FC = (): JSX.Element => {
   const [searchTerm, setSearchTermInternal] = useState<string>('');
-  const { setFilter } = useContext(DataContext);
+  const setFilter = useSetFilter();
 
   const doSearch = (): void => {
     setFilter(FilterKey.name)(searchTerm);

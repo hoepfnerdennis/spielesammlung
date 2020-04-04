@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useContext } from 'react';
+import React, { useMemo, useState } from 'react';
 import styles from './styles.module.css';
 import Select from '../Select';
 import Checkbox from '../Checkbox';
@@ -6,11 +6,16 @@ import { order } from '../utils';
 import Layer from '../Layer';
 import { FilterKey } from '../Store/types';
 import Button from '../ Button';
-import DataContext from '../Store/DataContext';
+import { useGames } from '../Store/GamesStore';
+import { useFilters } from '../Store/FiltersStore';
+import { useSetFilter } from '../Store/action';
 
 const Filters: React.FC = (): JSX.Element => {
   const [displayFilterLayer, setDisplayFilterLayer] = useState<boolean>(false);
-  const { games, setFilter, activeFilters } = useContext(DataContext);
+
+  const games = useGames();
+  const activeFilters = useFilters();
+  const setFilter = useSetFilter();
 
   const playersFromValues: string[] = useMemo(
     () =>

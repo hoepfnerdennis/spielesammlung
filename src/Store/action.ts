@@ -1,14 +1,12 @@
-import { useCallback, useState, useEffect } from 'react';
-import {
-  IGame,
-  IAPIResponse,
-  FiltersConfig,
-  FilterKey,
-  FilterValue,
-  SetFilterFunc,
-  ActiveFiltersMap,
-} from './types';
+import { useCallback, useEffect } from 'react';
+import { IGame, IAPIResponse, FiltersConfig, FilterKey, FilterValue, SetFilterFunc } from './types';
 import { mapResultsToGames } from '../utils';
+import { useDispatch as useDispatchGames, ActionTypes as GamesActionTypes } from './GamesStore';
+import {
+  useFilters,
+  useDispatch as useDispatchFilters,
+  ActionTypes as FiltersActionTypes,
+} from './FiltersStore';
 
 const SPACE_ID = '9sxha2f3gm24';
 const API_TOKEN = '7LDIC95TsrYOfZwEQnbAuMHtij97kfk5r1dIRiGqT8M';
@@ -36,54 +34,46 @@ const fetchGames = async (url: string) => {
   }
 };
 
-const fetchGamesAction = async (filters: Map<FilterKey, FilterValue>): Promise<IGame[]> => {
+const fetchGamesAction = async (filters?: Map<FilterKey, FilterValue>): Promise<IGame[]> => {
   let url = `${BASE_URI}&content_type=game`;
-  filters.forEach((value, key) => {
-    url += `&fields.${FilterKey[key]}${filtersConfig[FilterKey[key]]}=${value}`; // &fields.playersTo[gte]=${from}`;
-  });
+  if (filters) {
+    filters.forEach((value, key) => {
+      url += `&fields.${FilterKey[key]}${filtersConfig[FilterKey[key]]}=${value}`; // &fields.playersTo[gte]=${from}`;
+    });
+  }
   return fetchGames(url);
 };
 
-const useData = (): {
-  games: IGame[];
-  setFilter: SetFilterFunc;
-  activeFilters: ActiveFiltersMap;
-} => {
-  const [games, setGames] = useState<IGame[]>([]);
-  const [activeFilters, setActiveFilters] = useState<ActiveFiltersMap>(new Map());
+export const useSetFilter = (): SetFilterFunc => {
+  const dispatch = useDispatchFilters();
+  const activeFilters = useFilters();
 
-  useEffect(() => {
-    const getGames = async (): Promise<void> => {
-      const newGames = await fetchGamesAction(activeFilters);
-      setGames(newGames);
-    };
-    getGames();
-  }, [activeFilters]);
-
-  const addFilter = useCallback((key: FilterKey, value: FilterValue): void => {
-    setActiveFilters((activeFiltersMap) => {
-      if (activeFiltersMap.get(key) === value) {
-        return activeFiltersMap;
+  const addFilter = useCallback(
+    (key: FilterKey, value: FilterValue): void => {
+      if (activeFilters.get(key) === value) {
+        return;
       }
-      const newMap = new Map(activeFiltersMap);
+      const newMap = new Map(activeFilters);
       newMap.set(key, value);
-      return newMap;
-    });
-  }, []);
+      dispatch({ type: FiltersActionTypes.SET_FILTER, payload: newMap });
+    },
+    [activeFilters, dispatch]
+  );
 
-  const removeFilter = useCallback((key: FilterKey): void => {
-    setActiveFilters((activeFiltersMap) => {
-      if (!activeFiltersMap.has(key)) {
-        return activeFiltersMap;
+  const removeFilter = useCallback(
+    (key: FilterKey): void => {
+      if (!activeFilters.has(key)) {
+        return;
       }
-      const newMap = new Map(activeFiltersMap);
+      const newMap = new Map(activeFilters);
       newMap.delete(key);
-      return newMap;
-    });
-  }, []);
+      dispatch({ type: FiltersActionTypes.SET_FILTER, payload: newMap });
+    },
+    [activeFilters, dispatch]
+  );
 
   const setFilter = useCallback(
-    (key: FilterKey) => (value?: FilterValue | undefined): void => {
+    (key: FilterKey) => (value?: FilterValue): void => {
       if (value) {
         addFilter(key, value);
       } else {
@@ -93,7 +83,17 @@ const useData = (): {
     [addFilter, removeFilter]
   );
 
-  return { games, setFilter, activeFilters };
+  return setFilter;
 };
 
-export default useData;
+export const useFetchGames = (): void => {
+  const dispatch = useDispatchGames();
+  const activeFilters = useFilters();
+  useEffect(() => {
+    const getGames = async (): Promise<void> => {
+      const newGames = await fetchGamesAction(activeFilters);
+      dispatch({ type: GamesActionTypes.SET_GAMES, payload: newGames });
+    };
+    getGames();
+  }, [activeFilters, dispatch]);
+};

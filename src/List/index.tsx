@@ -1,13 +1,16 @@
-import React, { Suspense, useContext } from 'react';
+import React, { Suspense } from 'react';
 import { IGame } from '../Store/types';
 import Filters from '../Filters';
 import styles from './styles.module.css';
-import DataContext from '../Store/DataContext';
+import { useFetchGames } from '../Store/action';
+import { useGames } from '../Store/GamesStore';
 
 const Entry = React.lazy(() => import(/* webpackChunkName: "entry" */ '../Entry'));
 
 const List: React.SFC = (): JSX.Element => {
-  const { games } = useContext(DataContext);
+  const games = useGames();
+
+  useFetchGames();
 
   return (
     <>
