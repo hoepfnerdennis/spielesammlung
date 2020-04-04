@@ -1,5 +1,4 @@
 import React from 'react';
-import { Route, useLocation } from 'react-router-dom';
 import styles from './App.module.css';
 import Header from './Header';
 import List from './List';
@@ -8,11 +7,8 @@ import useData from './Store/action';
 import DataContext from './Store/DataContext';
 import BookmarkContext from './Bookmark/BookmarkContext';
 import useBookmarks from './Bookmark/useBookmarks';
-import BookmarkList from './Bookmark/BookmarkList';
 
 const App: React.FC = () => {
-  const location = useLocation();
-  console.log(location);
   const { games, setFilter, activeFilters } = useData();
   const { bookmarks, mark } = useBookmarks();
 
@@ -22,11 +18,7 @@ const App: React.FC = () => {
         <div className={styles.container}>
           <Header />
           <main>
-            <Route exact path="/">
-              <List />
-            </Route>
-            <Route path="/shared/:title/:ids" component={BookmarkList} />
-            <Route path="/bookmarks" component={BookmarkList} />
+            <List />
           </main>
           <Footer />
         </div>

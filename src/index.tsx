@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from 'react-router-dom';
+import { createRenderer } from 'fela';
+import { RendererProvider } from 'react-fela';
 import App from './App';
 import { register } from './serviceWorker';
 
+const renderer = createRenderer();
+
 ReactDOM.render(
-  <HashRouter>
+  <RendererProvider renderer={renderer}>
     <App />
-  </HashRouter>,
+  </RendererProvider>,
   document.getElementById('root')
 );
 

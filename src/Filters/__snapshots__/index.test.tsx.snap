@@ -3,7 +3,7 @@
 exports[`Filters should open and close layer 1`] = `
 <div>
   <button
-    class="button"
+    class="filled"
     type="button"
   >
     Filter anzeigen
@@ -49,7 +49,7 @@ exports[`Filters should open and close layer 1`] = `
 exports[`Filters should open and close layer 2`] = `
 <div>
   <button
-    class="button"
+    class="filled"
     type="button"
   >
     Filter anzeigen
@@ -60,7 +60,7 @@ exports[`Filters should open and close layer 2`] = `
 exports[`Filters should render favorite selected 1`] = `
 <div>
   <button
-    class="button"
+    class="filled"
     type="button"
   >
     Filter anzeigen
@@ -106,7 +106,7 @@ exports[`Filters should render favorite selected 1`] = `
 exports[`Filters should render no active filter 1`] = `
 <div>
   <button
-    class="button"
+    class="filled"
     type="button"
   >
     Filter anzeigen

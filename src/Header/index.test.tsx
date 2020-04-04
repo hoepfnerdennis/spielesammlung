@@ -7,7 +7,7 @@ jest.mock('../Search', () => () => 'Search');
 
 describe('Header', () => {
   it('should render and match snapshot', () => {
-    const { container } = render(<Header setFilter={jest.fn()} />);
+    const { container } = render(<Header />);
     expect(container).toMatchSnapshot();
   });
 });

@@ -11,12 +11,12 @@ exports[`Search should render and match snapshot 1`] = `
       type="text"
       value=""
     />
-    <input
-      class="submit"
-      data-testid="submit"
-      type="submit"
-      value="Suchen"
-    />
+    <button
+      class="stroke"
+      type="button"
+    >
+      Suchen
+    </button>
   </form>
 </div>
 `;

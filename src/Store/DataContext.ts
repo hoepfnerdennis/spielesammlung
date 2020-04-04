@@ -9,8 +9,10 @@ const defaultValue = {
   activeFilters: new Map(),
 };
 
-export default createContext<{
+export interface IDataContext {
   games: IGame[];
   setFilter: SetFilterFunc;
   activeFilters: ActiveFiltersMap;
-}>(defaultValue);
+}
+
+export default createContext<IDataContext>(defaultValue);

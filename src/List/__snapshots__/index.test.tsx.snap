@@ -10,7 +10,7 @@ exports[`List should render and match snapshot 1`] = `
        Spiele
     </span>
     <button
-      class="button"
+      class="filled"
       type="button"
     >
       Filter anzeigen

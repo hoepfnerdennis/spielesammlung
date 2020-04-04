@@ -3,7 +3,7 @@
 exports[`Checkbox should render checked 1`] = `
 <div>
   <button
-    class="checked"
+    class="filled"
     type="button"
   >
     label
@@ -14,7 +14,7 @@ exports[`Checkbox should render checked 1`] = `
 exports[`Checkbox should render unchecked 1`] = `
 <div>
   <button
-    class="unchecked"
+    class="stroke"
     type="button"
   >
     label
