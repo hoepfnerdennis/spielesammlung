@@ -34,13 +34,11 @@ const fetchGames = async (url: string) => {
   }
 };
 
-const fetchGamesAction = async (filters?: Map<FilterKey, FilterValue>): Promise<IGame[]> => {
+const fetchGamesAction = async (filters: Map<FilterKey, FilterValue>): Promise<IGame[]> => {
   let url = `${BASE_URI}&content_type=game`;
-  if (filters) {
-    filters.forEach((value, key) => {
-      url += `&fields.${FilterKey[key]}${filtersConfig[FilterKey[key]]}=${value}`; // &fields.playersTo[gte]=${from}`;
-    });
-  }
+  filters.forEach((value, key) => {
+    url += `&fields.${FilterKey[key]}${filtersConfig[FilterKey[key]]}=${value}`; // &fields.playersTo[gte]=${from}`;
+  });
   return fetchGames(url);
 };
 

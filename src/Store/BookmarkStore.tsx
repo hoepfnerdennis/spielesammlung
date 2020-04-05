@@ -17,8 +17,6 @@ const initialState: string[] = localStorage.getItem('bookmarks')?.split(',') || 
 
 const dataReducer = (state: string[], action: IAction): string[] => {
   switch (action.type) {
-    case ActionTypes.SET_BOOKMARKS:
-      return action.payload;
     case ActionTypes.ADD_BOOKMARK:
       return [...state, action.payload];
     case ActionTypes.REMOVE_BOOKMARK:

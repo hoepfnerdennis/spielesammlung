@@ -1,6 +1,6 @@
-import { chunkArray, mapResultsToGames, order, sortByName } from './index';
-import data from '../../mockData/test-data.json';
-import getGame from '../../mockData/test-games';
+import { chunkArray, mapResultsToGames, order, sortByName } from '../index';
+import data from '../../../mockData/test-data.json';
+import getGame from '../../../mockData/test-games';
 
 describe('utils', () => {
   describe('chunkArray', () => {

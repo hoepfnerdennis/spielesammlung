@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render default 1`] = `
+<div>
+  <button
+    class="filled"
+    type="button"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`Button should render secondary 1`] = `
+<div>
+  <button
+    class="stroke"
+    type="button"
+  >
+    Button
+  </button>
+</div>
+`;

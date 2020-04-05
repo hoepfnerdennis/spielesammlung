@@ -15,7 +15,11 @@ const Marker: React.FC<{ id: string }> = ({ id }) => {
   const mark = useMark();
   const { css } = useFela();
   return (
-    <button type="button" onClick={(): void => mark(id)} className={css(invisibleButton)}>
+    <button
+      data-testid="bookmark-toggle"
+      type="button"
+      onClick={(): void => mark(id)}
+      className={css(invisibleButton)}>
       {bookmarks.includes(id) ? '❤️' : '🤍'}
     </button>
   );
