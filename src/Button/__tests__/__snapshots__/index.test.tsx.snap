@@ -3,7 +3,7 @@
 exports[`Button should render default 1`] = `
 <div>
   <button
-    class="filled"
+    class="a b c d e f g h"
     type="button"
   >
     Button
@@ -14,7 +14,7 @@ exports[`Button should render default 1`] = `
 exports[`Button should render secondary 1`] = `
 <div>
   <button
-    class="stroke"
+    class="a b c d e f i j"
     type="button"
   >
     Button

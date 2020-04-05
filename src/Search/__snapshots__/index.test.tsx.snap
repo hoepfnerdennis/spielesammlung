@@ -12,7 +12,7 @@ exports[`Search should render and match snapshot 1`] = `
       value=""
     />
     <button
-      class="stroke"
+      data-checked="true"
       type="button"
     >
       Suchen

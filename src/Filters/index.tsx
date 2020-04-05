@@ -5,7 +5,7 @@ import Checkbox from '../Checkbox';
 import { order } from '../utils';
 import Layer from '../Layer';
 import { FilterKey } from '../Store/types';
-import Button from '../ Button';
+import Button from '../Button';
 import { useGames } from '../Store/GamesStore';
 import { useFilters } from '../Store/FiltersStore';
 import { useSetFilter } from '../Store/action';

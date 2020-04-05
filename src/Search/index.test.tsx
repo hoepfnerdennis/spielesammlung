@@ -7,6 +7,14 @@ import { useSetFilter } from '../Store/action';
 
 jest.mock('../Store/action');
 
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+jest.mock('../Button', () => ({ secondary, onClick, children }) => (
+  <button type="button" data-checked={secondary} onClick={onClick}>
+    {children}
+  </button>
+));
+
 describe('Search', () => {
   it('should render and match snapshot', () => {
     const { container } = render(<Search />);

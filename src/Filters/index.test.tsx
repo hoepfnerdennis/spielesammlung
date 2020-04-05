@@ -11,6 +11,14 @@ jest.mock('../Layer/index', () => ({ children, closeLayer }: any) => (
   </button>
 ));
 
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+jest.mock('../Button', () => ({ secondary, onClick, children }) => (
+  <button type="button" data-checked={secondary} onClick={onClick}>
+    {children}
+  </button>
+));
+
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 jest.mock('../Select', () => () => 'Select');
 
@@ -24,9 +32,7 @@ describe('Filters', () => {
   ])('should render %s', (_, activeFilters) => {
     const games = [getGame(), getGame(), getGame(), getGame()];
     const setFilter = jest.fn();
-    const { container, getByText } = render(
-      <Filters activeFilters={activeFilters} games={games} setFilter={setFilter} />
-    );
+    const { container, getByText } = render(<Filters />);
     fireEvent.click(getByText('Filter anzeigen'));
     expect(container).toMatchSnapshot();
   });
@@ -34,9 +40,7 @@ describe('Filters', () => {
     const activeFilters: ActiveFiltersMap = new Map();
     const games = [getGame(), getGame(), getGame(), getGame()];
     const setFilter = jest.fn();
-    const { container, getByText, getByTestId } = render(
-      <Filters activeFilters={activeFilters} games={games} setFilter={setFilter} />
-    );
+    const { container, getByText, getByTestId } = render(<Filters />);
     fireEvent.click(getByText('Filter anzeigen'));
     expect(container).toMatchSnapshot();
 

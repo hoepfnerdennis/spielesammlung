@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
 import { FilterKey } from '../Store/types';
-import Button from '../ Button';
+import Button from '../Button';
 import { useSetFilter } from '../Store/action';
 
 const Search: React.FC = (): JSX.Element => {
